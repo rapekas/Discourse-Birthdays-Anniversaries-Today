@@ -26,7 +26,7 @@ xhr.onload = () => {
 export default apiInitializer("1.14.0", (api) => {
     const banner_location = settings.banner_location
     api.renderInOutlet(
-        banner_location,
+        'before-main-container',
         class bdaysAnnsBanner extends Component {
             get bdays() {
                 // Grab anniversaries
@@ -58,7 +58,7 @@ export default apiInitializer("1.14.0", (api) => {
                         allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
                     }
                     return [numberOfBdays, allBdaysUsernames];
-                } 
+                }
             }
 
             <template>
@@ -84,13 +84,5 @@ export default apiInitializer("1.14.0", (api) => {
                 </div>
             </template>
         }
-    )
-    
-    // Use fetch for simplicity
-    
-    
-    
-    
-
-  
+    );
 });
