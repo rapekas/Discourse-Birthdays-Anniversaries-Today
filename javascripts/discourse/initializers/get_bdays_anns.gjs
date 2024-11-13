@@ -1,6 +1,6 @@
-/*
-// Either works
+// Either works (fetch/XML)
 
+/*
 const xhr = new XMLHttpRequest();
 xhr.open("GET", "/cakeday/anniversaries/today.json");
 xhr.send();
@@ -19,16 +19,19 @@ xhr.onload = () => {
 };
 */
 
+// Use fetch for simplicity
+
+// Grab anniversaries
 fetch("/cakeday/anniversaries/today.json")
     .then((response) => response.json())
-    .then((json) => RunCheck(json));
+    .then((json) => RunCheckAnn(json));
     
-function RunCheck(resp) {
-    numberOfBdays = resp['total_rows_birthdays']
-    allBdays = resp['anniversaries'] // Is a list of dicts
-    allBdaysUsernames = []
-    for (bdayUserdata in allBdays) {
-        allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
+function RunCheckAnn(resp) {
+    numberOfAnns = resp['total_rows_anniversaires']
+    allAnns = resp['anniversaries'] // Is a list of dicts
+    allAnnsUsernames = []
+    for (AnnUserdata in allAnns) {
+        allAnnsUsernames.push(allAnns[AnnUserdata]['username'])
     }
-    console.log(allBdaysUsernames);
+    console.log(allAnnsUsernames);
 }
