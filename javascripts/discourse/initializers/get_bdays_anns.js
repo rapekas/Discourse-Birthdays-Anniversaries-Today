@@ -66,7 +66,7 @@ export default apiInitializer("1.14.0", (api) => {
                     <div class='birthdays'>
                         <p>
                             {{this.bdays[0]}} users celebrated their birthdays today.
-                            <br/>
+                            <br>
                             {{#each this.bdays[1]}}
                                 <a class='mention'>{{this}}</a>
                             {{/each}}
