@@ -61,12 +61,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             }
 
-            <template>
-                <p>Hi there</p>
-                              
-                              
-            </template>
-            /*
+
             <template>
                 <div class='bd-anns-banner'>
                     <div class='birthdays'>
@@ -89,7 +84,7 @@ export default apiInitializer("1.14.0", (api) => {
                     </div>
                 </div>
             </template>
-            */
+
         }
     );
 });
