@@ -66,22 +66,7 @@ export default apiInitializer("1.14.0", (api) => {
                 <div class='bd-anns-banner'>
                     <div class='birthdays'>
       <p>{{this.getBdays}}</p>
-                        <!--<p>
-                            {{this.getBdays[0]}} users celebrated their birthdays today.
-                            <br>
-                            {{#each this.getBdays[1]}}
-                                <a class='mention'>{{this}}</a>
-                            {{/each}}
-                        </p>-->
-                    </div>
-                     <div class='anniversaries'>
-                        <!--<p>
-                            {{this.getAnns[0]}} users celebrated their anniversaries today.
-                            <br/>
-                            {{#each this.getAnns[1]}}
-                                <a class='mention'>{{this}}</a>
-                            {{/each}}
-                        </p>-->
+                        
                     </div>
                 </div>
             </template>
