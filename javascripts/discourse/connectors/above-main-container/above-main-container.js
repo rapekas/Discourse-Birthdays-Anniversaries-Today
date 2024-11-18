@@ -25,8 +25,12 @@ export default class bdaysAnnsBanner extends Component {
       get getAnns() {
           // Grab anniversaries
           fetch("/cakeday/anniversaries/today.json")
-              .then((response) => response.json())
-              .then((json) => RunCheckAnns(json));
+              .then(
+                (response) => response.json()
+              )
+              .then(
+                (json) => RunCheckAnns(json)
+              );
             
           function RunCheckAnns(resp) {
               numberOfAnns = resp['total_rows_anniversaires'];
@@ -34,8 +38,8 @@ export default class bdaysAnnsBanner extends Component {
               let allAnnsUsernames = [];
               for (AnnUserdata in allAnns) {
                   allAnnsUsernames.push(allAnns[AnnUserdata]['username'];
-              return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
               }
+              return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
           }
       }
   
