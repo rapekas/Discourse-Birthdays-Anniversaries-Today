@@ -26,7 +26,7 @@ xhr.onload = () => {
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
     api.renderInOutlet(
-        'before-main-container',
+        'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
                 // Grab anniversaries
@@ -65,6 +65,7 @@ export default apiInitializer("1.14.0", (api) => {
 
 
             <template>
+<h1>Hi</h1>
                       <p>{{this.getBdays}}</p>
             </template>
 
