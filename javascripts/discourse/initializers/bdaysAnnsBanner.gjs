@@ -63,12 +63,10 @@ export default apiInitializer("1.14.0", (api) => {
 
 
             <template>
-                <div class='bd-anns-banner'>
-                    <div class='birthdays'>
-      <p>{{this.getBdays}}</p>
+
+                      <p>{{this.getBdays}}</p>
                         
-                    </div>
-                </div>
+
             </template>
 
         }
