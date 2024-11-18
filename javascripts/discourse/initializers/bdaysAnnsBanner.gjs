@@ -41,6 +41,7 @@ export default apiInitializer("1.14.0", (api) => {
                     for (var annUserdata in allAnns) {
                         allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
+                    console.log({'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames});
                     return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
                 }
             }
@@ -57,16 +58,14 @@ export default apiInitializer("1.14.0", (api) => {
                     for (var bdayUserdata in allBdays) {
                         allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
                     }
+                    console.log({'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames});
                     return {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
                 }
             }
 
 
             <template>
-
                       <p>{{this.getBdays}}</p>
-                        
-
             </template>
 
         }
