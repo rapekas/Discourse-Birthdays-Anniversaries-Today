@@ -39,7 +39,7 @@ export default apiInitializer("1.14.0", (api) => {
                     let allAnns = resp['anniversaries']; // Is a list of dicts
                     let allAnnsUsernames = [];
                     for (var annUserdata in allAnns) {
-                        allAnnsUsernames.push(allAnns[annUserdata]['username']);
+                        allAnnsUsernames.push(annUserdata['username']);
                     }
                     console.log({'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames});
                     return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
@@ -56,7 +56,7 @@ export default apiInitializer("1.14.0", (api) => {
                     let allBdays = resp['birthdays']; // Is a list of dicts
                     let allBdaysUsernames = [];
                     for (var bdayUserdata in allBdays) {
-                        allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
+                        allBdaysUsernames.push(bdayUserdata['username'])
                     }
                     console.log({'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames});
                     return {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
