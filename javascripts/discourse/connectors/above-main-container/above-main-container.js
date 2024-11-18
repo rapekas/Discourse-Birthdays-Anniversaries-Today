@@ -32,8 +32,8 @@ export default class bdaysAnnsBanner extends Component {
               let numberOfAnns = resp['total_rows_anniversaires'];
               let allAnns = resp['anniversaries']; // Is a list of dicts
               let allAnnsUsernames = [];
-              for (AnnUserdata in allAnns) {
-                  allAnnsUsernames.push(allAnns[AnnUserdata]['username']);
+              for (vat annUserdata in allAnns) {
+                  allAnnsUsernames.push(allAnns[annUserdata]['username']);
               }
               return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
           }
@@ -48,7 +48,7 @@ export default class bdaysAnnsBanner extends Component {
               let numberOfBdays = resp['total_rows_birthdays'];
               let allBdays = resp['birthdays']; // Is a list of dicts
               let allBdaysUsernames = [];
-              for (bdayUserdata in allBdays) {
+              for (var bdayUserdata in allBdays) {
                   allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
               }
               return {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
