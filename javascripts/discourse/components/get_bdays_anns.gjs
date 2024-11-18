@@ -23,11 +23,7 @@ xhr.onload = () => {
 };
 */
 
-export default apiInitializer("1.14.0", (api) => {
-    const banner_location = settings.banner_location
-    api.renderInOutlet(
-        'before-main-container',
-        class bdaysAnnsBanner extends Component {
+export default class bdaysAnnsBanner extends Component {
             get getAnns() {
                 // Grab anniversaries
                 fetch("/cakeday/anniversaries/today.json")
