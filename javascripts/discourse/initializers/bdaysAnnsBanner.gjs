@@ -40,8 +40,8 @@ export default apiInitializer("1.14.0", (api) => {
                     console.log(allAnns);
                     let allAnnsUsernames = [];
                     for (var annUserdata in allAnns) {
-                        console.log(annUserdata);
-                        allAnnsUsernames.push(annUserdata['username']);
+                        console.log(allAnns[annUserdata]['username']);
+                        allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
                     console.log({'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames});
                     return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
