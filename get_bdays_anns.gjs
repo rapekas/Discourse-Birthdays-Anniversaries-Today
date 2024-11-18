@@ -28,7 +28,7 @@ export default apiInitializer("1.14.0", (api) => {
     api.renderInOutlet(
         'before-main-container',
         class bdaysAnnsBanner extends Component {
-            get bdays() {
+            get getAnns() {
                 // Grab anniversaries
                 fetch("/cakeday/anniversaries/today.json")
                     .then((response) => response.json())
@@ -38,14 +38,14 @@ export default apiInitializer("1.14.0", (api) => {
                     let numberOfAnns = resp['total_rows_anniversaires'];
                     let allAnns = resp['anniversaries']; // Is a list of dicts
                     let allAnnsUsernames = [];
-                    for (AnnUserdata in allAnns) {
-                        allAnnsUsernames.push(allAnns[AnnUserdata]['username']);
-                    return [numberOfAnns, allAnnsUsernames];
+                    for (var annUserdata in allAnns) {
+                        allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
+                    return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
                 }
             }
-
-            get anns() {
+        
+            get getBdays() {
                fetch("/cakeday/birthdays/today.json")
                    .then((response) => response.json())
                    .then((json) => RunCheckBdays(json));
@@ -54,10 +54,10 @@ export default apiInitializer("1.14.0", (api) => {
                     let numberOfBdays = resp['total_rows_birthdays'];
                     let allBdays = resp['birthdays']; // Is a list of dicts
                     let allBdaysUsernames = [];
-                    for (bdayUserdata in allBdays) {
+                    for (var bdayUserdata in allBdays) {
                         allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
                     }
-                    return [numberOfBdays, allBdaysUsernames];
+                    return {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
                 }
             }
 
@@ -66,18 +66,18 @@ export default apiInitializer("1.14.0", (api) => {
                 <div class='bd-anns-banner'>
                     <div class='birthdays'>
                         <p>
-                            {{this.bdays[0]}} users celebrated their birthdays today.
+                            {{this.getBdays[0]}} users celebrated their birthdays today.
                             <br>
-                            {{#each this.bdays[1]}}
+                            {{#each this.getBdays[1]}}
                                 <a class='mention'>{{this}}</a>
                             {{/each}}
                         </p>
                     </div>
                      <div class='anniversaries'>
                         <p>
-                            {{this.anns[0]}} users celebrated their anniversaries today.
+                            {{this.getAnns[0]}} users celebrated their anniversaries today.
                             <br/>
-                            {{#each this.anns[1]}}
+                            {{#each this.getAnns[1]}}
                                 <a class='mention'>{{this}}</a>
                             {{/each}}
                         </p>
