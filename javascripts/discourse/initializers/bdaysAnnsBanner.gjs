@@ -37,8 +37,10 @@ export default apiInitializer("1.14.0", (api) => {
                 function RunCheckAnns(resp) {
                     let numberOfAnns = resp['total_rows_anniversaires'];
                     let allAnns = resp['anniversaries']; // Is a list of dicts
+                    console.log(allAnns);
                     let allAnnsUsernames = [];
                     for (var annUserdata in allAnns) {
+                        console.log(annUserdata);
                         allAnnsUsernames.push(annUserdata['username']);
                     }
                     console.log({'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames});
