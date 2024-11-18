@@ -35,11 +35,11 @@ export default apiInitializer("1.14.0", (api) => {
                     .then((json) => RunCheckAnns(json));
                   
                 function RunCheckAnns(resp) {
-                    numberOfAnns = resp['total_rows_anniversaires'];
-                    allAnns = resp['anniversaries']; // Is a list of dicts
+                    let numberOfAnns = resp['total_rows_anniversaires'];
+                    let allAnns = resp['anniversaries']; // Is a list of dicts
                     let allAnnsUsernames = [];
                     for (AnnUserdata in allAnns) {
-                        allAnnsUsernames.push(allAnns[AnnUserdata]['username'];
+                        allAnnsUsernames.push(allAnns[AnnUserdata]['username']);
                     return [numberOfAnns, allAnnsUsernames];
                     }
                 }
@@ -51,9 +51,9 @@ export default apiInitializer("1.14.0", (api) => {
                    .then((json) => RunCheckBdays(json));
                 
                 function RunCheckBdays(resp) {
-                    numberOfBdays = resp['total_rows_birthdays']
-                    allBdays = resp['birthdays'] // Is a list of dicts
-                    allBdaysUsernames = []
+                    let numberOfBdays = resp['total_rows_birthdays'];
+                    let allBdays = resp['birthdays']; // Is a list of dicts
+                    let allBdaysUsernames = [];
                     for (bdayUserdata in allBdays) {
                         allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
                     }
