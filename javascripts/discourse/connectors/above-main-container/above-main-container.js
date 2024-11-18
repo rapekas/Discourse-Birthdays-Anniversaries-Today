@@ -32,7 +32,7 @@ export default class bdaysAnnsBanner extends Component {
               let numberOfAnns = resp['total_rows_anniversaires'];
               let allAnns = resp['anniversaries']; // Is a list of dicts
               let allAnnsUsernames = [];
-              for (vat annUserdata in allAnns) {
+              for (var annUserdata in allAnns) {
                   allAnnsUsernames.push(allAnns[annUserdata]['username']);
               }
               return {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
