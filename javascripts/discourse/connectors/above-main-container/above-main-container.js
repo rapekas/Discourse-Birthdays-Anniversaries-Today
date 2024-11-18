@@ -1,6 +1,4 @@
 import Component from "@glimmer/component";
-import { apiInitializer } from "discourse/lib/api";
-import { htmlSafe } from "@ember/template";
 
 // Either works (fetch/XML)
 
@@ -24,7 +22,7 @@ xhr.onload = () => {
 */
 
 export default class bdaysAnnsBanner extends Component {
-      get bdays() {
+      get getAnns() {
           // Grab anniversaries
           fetch("/cakeday/anniversaries/today.json")
               .then((response) => response.json())
@@ -41,7 +39,7 @@ export default class bdaysAnnsBanner extends Component {
           }
       }
   
-      get anns() {
+      get getBdays() {
          fetch("/cakeday/birthdays/today.json")
              .then((response) => response.json())
              .then((json) => RunCheckBdays(json));
