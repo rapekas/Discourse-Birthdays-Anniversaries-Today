@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
 import { apiInitializer } from "discourse/lib/api";
-import { htmlSafe } from "@ember/template";
+
 
 // Either works (fetch/XML)
 
