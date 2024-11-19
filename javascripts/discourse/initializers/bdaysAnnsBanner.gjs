@@ -44,8 +44,8 @@ export default apiInitializer("1.14.0", (api) => {
                         console.log(allAnns[annUserdata]['username']);
                         allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
-                    var annsData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-                    return annsData;
+                    var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+                    return annsOfData;
                 }
                 
                 return RunCheckAnns(annsData);
