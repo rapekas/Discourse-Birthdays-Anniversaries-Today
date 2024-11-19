@@ -5,10 +5,9 @@ import { apiInitializer } from "discourse/lib/api";
 // Either works (fetch/XML)
 function getAnnsFetch() {
     // Grab anniversaries
-    var fetcheddata = fetch("/cakeday/anniversaries/today.json")
-        .then((response) => response.json())
-        .then((json) => RunCheckAnns(json));
-    console.log(fetcheddata.text);
+    var fetcheddata = fetch("/cakeday/anniversaries/today.json");
+
+    console.log(fetcheddata.json();
     function RunCheckAnns(resp) {
         let numberOfAnns = resp['total_rows_anniversaires'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
@@ -21,7 +20,7 @@ function getAnnsFetch() {
         var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
         return annsOfData;
     }
-    return annsOfData;
+    return RunCheckAnns(fetcheddata);
 }
 
 
