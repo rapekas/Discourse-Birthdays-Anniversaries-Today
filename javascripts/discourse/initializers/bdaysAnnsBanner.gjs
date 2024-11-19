@@ -7,7 +7,7 @@ function getAnnsFetch() {
     // Grab anniversaries
     var fetcheddata = fetch("/cakeday/anniversaries/today.json");
 
-    console.log(fetcheddata.json();
+    console.log(fetcheddata.json());
     function RunCheckAnns(resp) {
         let numberOfAnns = resp['total_rows_anniversaires'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
