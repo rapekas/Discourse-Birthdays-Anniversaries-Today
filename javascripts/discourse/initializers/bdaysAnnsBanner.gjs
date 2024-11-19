@@ -3,25 +3,26 @@ import { apiInitializer } from "discourse/lib/api";
 
 
 // Either works (fetch/XML)
-/*
-// Grab anniversaries
-fetch("/cakeday/anniversaries/today.json")
-    .then((response) => response.json())
-    .then((json) => RunCheckAnns(json));
-
-function RunCheckAnns(resp) {
-    let numberOfAnns = resp['total_rows_anniversaires'];
-    let allAnns = resp['anniversaries']; // Is a list of dicts
-    console.log(allAnns);
-    let allAnnsUsernames = [];
-    for (var annUserdata in allAnns) {
-        console.log(allAnns[annUserdata]['username']);
-        allAnnsUsernames.push(allAnns[annUserdata]['username']);
+function getAnnsFetch() {
+    // Grab anniversaries
+    var fetcheddata = fetch("/cakeday/anniversaries/today.json")
+        .then((response) => response.json())
+        .then((json) => RunCheckAnns(json));
+    console.log(fetcheddata);
+    function RunCheckAnns(resp) {
+        let numberOfAnns = resp['total_rows_anniversaires'];
+        let allAnns = resp['anniversaries']; // Is a list of dicts
+        console.log(allAnns);
+        let allAnnsUsernames = [];
+        for (var annUserdata in allAnns) {
+            console.log(allAnns[annUserdata]['username']);
+            allAnnsUsernames.push(allAnns[annUserdata]['username']);
+        }
+        var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+        return annsOfData;
     }
-    var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
     return annsOfData;
 }
-*/
 
 
 
