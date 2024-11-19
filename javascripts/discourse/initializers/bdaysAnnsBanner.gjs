@@ -8,13 +8,13 @@ function getAnnsFetch() {
     var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json());
     console.log(fetcheddata);
     function RunCheckAnns(resp) {
-        console.log(resp['anniversaries']);
+        //console.log(resp['anniversaries']);
         let numberOfAnns = resp['anniversaries'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
         //console.log(allAnns);
         let allAnnsUsernames = [];
         for (var annUserdata in allAnns) {
-            //console.log(allAnns[annUserdata]['username']);
+            console.log(allAnns[annUserdata]['username']);
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
         var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
