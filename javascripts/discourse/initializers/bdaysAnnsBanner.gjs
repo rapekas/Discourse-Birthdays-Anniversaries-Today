@@ -29,10 +29,11 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
+                var annsData = null
                 // Grab anniversaries
                 fetch("/cakeday/anniversaries/today.json")
                     .then((response) => response.json())
-                    .then((json) => var annsData = json);
+                    .then((json) => annsData = json);
                   
                 function RunCheckAnns(resp) {
                     let numberOfAnns = resp['total_rows_anniversaires'];
