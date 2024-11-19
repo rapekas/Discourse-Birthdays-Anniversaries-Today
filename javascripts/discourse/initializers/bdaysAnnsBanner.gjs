@@ -32,7 +32,7 @@ export default apiInitializer("1.14.0", (api) => {
                 // Grab anniversaries
                 fetch("/cakeday/anniversaries/today.json")
                     .then((response) => response.json())
-                    .then((json) => RunCheckAnns(json));
+                    .then((json) => var dataAnns = RunCheckAnns(json));
                   
                 function RunCheckAnns(resp) {
                     let numberOfAnns = resp['total_rows_anniversaires'];
@@ -44,9 +44,10 @@ export default apiInitializer("1.14.0", (api) => {
                         allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
                     var annsData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+                    return annsData;
                 }
                 
-                return annsData;
+                return dataAnns;
             }
         
             get getBdays() {
