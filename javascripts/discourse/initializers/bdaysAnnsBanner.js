@@ -44,8 +44,8 @@ export default apiInitializer("1.14.0", (api) => {
                         allAnnsUsernames.push(allAnns[annUserdata]['username']);
                     }
                     let annsData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames});
-                return annsData;
                 }
+                return annsData;
             }
         
             get getBdays() {
