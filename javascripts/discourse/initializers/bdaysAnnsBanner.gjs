@@ -33,11 +33,9 @@ export default apiInitializer("1.14.0", (api) => {
                 // Grab anniversaries
                 fetch("/cakeday/anniversaries/today.json")
                     .then((response) => response.json())
-                    .then((json) => var annsData = json);
+                    .then((json) => RunCheckAnns(json));
                 
-
                 function RunCheckAnns(resp) {
-                    console.log(resp);
                     let numberOfAnns = resp['total_rows_anniversaires'];
                     let allAnns = resp['anniversaries']; // Is a list of dicts
                     console.log(allAnns);
