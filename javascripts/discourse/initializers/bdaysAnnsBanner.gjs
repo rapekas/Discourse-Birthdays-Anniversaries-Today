@@ -33,6 +33,7 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
+                /*
                 const xhr = new XMLHttpRequest();
                 xhr.open("GET", "/cakeday/anniversaries/today.json");
                 xhr.send();
@@ -53,6 +54,8 @@ export default apiInitializer("1.14.0", (api) => {
                     }
                 };
                 return annsOfData;
+                */
+                getAnnsFetch();
             }
         
             get getBdays() {
