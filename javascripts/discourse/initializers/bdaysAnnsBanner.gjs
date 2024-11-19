@@ -6,10 +6,10 @@ import { apiInitializer } from "discourse/lib/api";
 function getAnnsFetch() {
     // Grab anniversaries
     var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json());
-    
+    console.log(fetcheddata.keys());
     function RunCheckAnns(resp) {
         console.log(resp);
-        let numberOfAnns = resp['anniversaries'].length;
+        let numberOfAnns = resp['anniversaries'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
         //console.log(allAnns);
         let allAnnsUsernames = [];
