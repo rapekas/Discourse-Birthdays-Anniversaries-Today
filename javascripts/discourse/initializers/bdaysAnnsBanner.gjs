@@ -38,7 +38,7 @@ export default apiInitializer("1.14.0", (api) => {
                 xhr.responseType = "json";
                 xhr.onload = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        resp = xhr.response;
+                        let resp = xhr.response;
                         let numberOfAnns = resp['total_rows_anniversaires'];
                         let allAnns = resp['anniversaries']; // Is a list of dicts
                         console.log(allAnns);
