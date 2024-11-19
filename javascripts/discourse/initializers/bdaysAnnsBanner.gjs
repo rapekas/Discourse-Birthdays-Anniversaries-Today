@@ -45,7 +45,7 @@ export default apiInitializer("1.14.0", (api) => {
                     }
                     let annsData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
                 }
-                console.log(annsData);
+                
                 return annsData;
             }
         
@@ -68,7 +68,7 @@ export default apiInitializer("1.14.0", (api) => {
 
 
             <template>
-                      <p>{{this.getAnns}}</p>
+                      <p>{{this.getAnns.anns_users}}</p>
             </template>
 
         }
