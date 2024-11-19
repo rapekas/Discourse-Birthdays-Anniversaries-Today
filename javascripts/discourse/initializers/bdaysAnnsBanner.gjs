@@ -34,7 +34,7 @@ export default apiInitializer("1.14.0", (api) => {
                 fetch("/cakeday/anniversaries/today.json")
                     .then((response) => response.json())
                     .then((json) => annsData = json);
-                  
+                console.log(annsData);
                 function RunCheckAnns(resp) {
                     console.log(resp.keys());
                     let numberOfAnns = resp['total_rows_anniversaires'];
