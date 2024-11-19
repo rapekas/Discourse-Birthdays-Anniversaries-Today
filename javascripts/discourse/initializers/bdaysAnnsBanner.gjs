@@ -69,7 +69,7 @@ export default apiInitializer("1.14.0", (api) => {
 
             <template>
 <p>Hi</p>
-                      
+                      <p>{{this.getAnns.anns_users}}</p>
             </template>
 
         }
