@@ -3,25 +3,28 @@ import { apiInitializer } from "discourse/lib/api";
 
 
 // Either works (fetch/XML)
-
 /*
-const xhr = new XMLHttpRequest();
-xhr.open("GET", "/cakeday/anniversaries/today.json");
-xhr.send();
-xhr.responseType = "json";
-xhr.onload = () => {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    resp = xhr.response;
-    numberOfBdays = resp['total_rows_birthdays']
-    allBdays = resp['anniversaries'] // Is a list of dicts
-    console.log(allBdays);
-    allBdaysUsernames = []
-    for (bdayUserdata in allBdays) {
-        allBdaysUsernames.push(allBdays[bdayUserdata]['username'])
+// Grab anniversaries
+fetch("/cakeday/anniversaries/today.json")
+    .then((response) => response.json())
+    .then((json) => RunCheckAnns(json));
+
+function RunCheckAnns(resp) {
+    let numberOfAnns = resp['total_rows_anniversaires'];
+    let allAnns = resp['anniversaries']; // Is a list of dicts
+    console.log(allAnns);
+    let allAnnsUsernames = [];
+    for (var annUserdata in allAnns) {
+        console.log(allAnns[annUserdata]['username']);
+        allAnnsUsernames.push(allAnns[annUserdata]['username']);
     }
-  }
-};
+    var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+    return annsOfData;
+}
 */
+
+
+
 
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
@@ -29,26 +32,26 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                var annsData = ""
-                // Grab anniversaries
-                fetch("/cakeday/anniversaries/today.json")
-                    .then((response) => response.json())
-                    .then((json) => RunCheckAnns(json));
-                
-                function RunCheckAnns(resp) {
-                    let numberOfAnns = resp['total_rows_anniversaires'];
-                    let allAnns = resp['anniversaries']; // Is a list of dicts
-                    console.log(allAnns);
-                    let allAnnsUsernames = [];
-                    for (var annUserdata in allAnns) {
-                        console.log(allAnns[annUserdata]['username']);
-                        allAnnsUsernames.push(allAnns[annUserdata]['username']);
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", "/cakeday/anniversaries/today.json");
+                xhr.send();
+                xhr.responseType = "json";
+                xhr.onload = () => {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        resp = xhr.response;
+                        let numberOfAnns = resp['total_rows_anniversaires'];
+                        let allAnns = resp['anniversaries']; // Is a list of dicts
+                        console.log(allAnns);
+                        let allAnnsUsernames = [];
+                        for (var annUserdata in allAnns) {
+                            console.log(allAnns[annUserdata]['username']);
+                            allAnnsUsernames.push(allAnns[annUserdata]['username']);
+                        }
+                        var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+                        
                     }
-                    var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-                    return annsOfData;
-                }
-                
-                return RunCheckAnns(annsData);
+                };
+                return annsOfData;
             }
         
             get getBdays() {
