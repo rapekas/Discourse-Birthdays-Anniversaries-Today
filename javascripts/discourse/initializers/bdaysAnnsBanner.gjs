@@ -12,10 +12,10 @@ function getAnnsFetch() {
     function RunCheckAnns(resp) {
         let numberOfAnns = resp['total_rows_anniversaires'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
-        console.log(allAnns);
+        //console.log(allAnns);
         let allAnnsUsernames = [];
         for (var annUserdata in allAnns) {
-            console.log(allAnns[annUserdata]['username']);
+            //console.log(allAnns[annUserdata]['username']);
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
         var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
