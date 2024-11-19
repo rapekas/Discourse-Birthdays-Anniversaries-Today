@@ -5,7 +5,7 @@ import { apiInitializer } from "discourse/lib/api";
 // Either works (fetch/XML)
 function getAnnsFetch() {
     // Grab anniversaries
-    var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json()).then((json) => console.log(json));
+    var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json()).then((json) => return json);
 
     function RunCheckAnns(resp) {
         let numberOfAnns = resp['total_rows_anniversaires'];
