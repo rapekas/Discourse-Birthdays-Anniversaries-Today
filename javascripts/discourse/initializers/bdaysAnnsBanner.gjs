@@ -36,6 +36,7 @@ export default apiInitializer("1.14.0", (api) => {
                     .then((json) => annsData = json);
                   
                 function RunCheckAnns(resp) {
+                    console.log(resp.keys());
                     let numberOfAnns = resp['total_rows_anniversaires'];
                     let allAnns = resp['anniversaries']; // Is a list of dicts
                     console.log(allAnns);
