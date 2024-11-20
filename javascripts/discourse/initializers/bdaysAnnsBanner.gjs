@@ -120,7 +120,7 @@ export default apiInitializer("1.14.0", (api) => {
                 {{#if this.isHomepage}}
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
                         {{#if this.annsData}}
-                          <p>{{this.annsData.num_users}} users celebrating their anniversary!</p>
+                          <p>{{this.annsData.num_anns}} users celebrating their anniversary!</p>
                           <!-- Display the anniversaries data -->
                             {{#each this.annsData.anns_users as |username|}}
                                 <span><a class='mention'>{{username}}</a></span>
