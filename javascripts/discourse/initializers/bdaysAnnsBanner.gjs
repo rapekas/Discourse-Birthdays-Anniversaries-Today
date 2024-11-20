@@ -27,27 +27,29 @@ return annsOfData;
 
 
 // Either works (fetch/XML)
-function getAnnsFetch() {
+async function getAnnsFetch() {
+    // Declare annsDataFinal here
     let annsDataFinal;
-    // Grab anniversaries
-    var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json()).then((json) => RunCheckAnns(json));
-    
-    function RunCheckAnns(resp) {
-        //console.log(resp['anniversaries']);
-        let numberOfAnns = parseInt(resp['total_rows_anniversaries']);
-        let allAnns = resp['anniversaries']; // Is a list of dicts
-        let allAnnsUsernames = [];
-        for (var annUserdata in allAnns) {
-            //console.log(allAnns[annUserdata]['username']);
-            allAnnsUsernames.push(allAnns[annUserdata]['username']);
-        }
-        annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-        console.log(annsDataFinal);
+
+    // Fetch anniversaries data
+    const response = await fetch("/cakeday/anniversaries/today.json");
+    const json = await response.json();
+
+    // Run the logic to process the data
+    let numberOfAnns = parseInt(json['total_rows_anniversaries']);
+    let allAnns = json['anniversaries']; // Is a list of dicts
+    let allAnnsUsernames = [];
+
+    for (let annUserdata of allAnns) {
+        allAnnsUsernames.push(annUserdata['username']);
     }
-    //console.log(annsDataFinal);
-    console.log(annsDataFinal)
-    return annsDataFinal;
+
+    annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+    console.log(annsDataFinal);  // Just to verify the result
+
+    return annsDataFinal; // Now return the data
 }
+
 
 
 
@@ -58,9 +60,9 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                let gotAnnsData = getAnnsFetch();
-                console.log(gotAnnsData);
-                return {'num_anns': 1, 'anns_users': 'hi there'}
+                getAnnsFetch().then(annsData => {
+                    return annsData;
+                });
             }
         
             get getBdays() {
