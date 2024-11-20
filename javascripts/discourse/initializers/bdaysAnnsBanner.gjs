@@ -28,7 +28,7 @@ return annsOfData;
 
 // Either works (fetch/XML)
 function getAnnsFetch() {
-    var annsDataFinal;
+    let annsDataFinal;
     // Grab anniversaries
     var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json()).then((json) => RunCheckAnns(json));
     
@@ -38,12 +38,13 @@ function getAnnsFetch() {
         let allAnns = resp['anniversaries']; // Is a list of dicts
         let allAnnsUsernames = [];
         for (var annUserdata in allAnns) {
-            console.log(allAnns[annUserdata]['username']);
+            //console.log(allAnns[annUserdata]['username']);
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
         var annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
     }
-    console.log(annsDataFinal);
+    //console.log(annsDataFinal);
+    
     return annsDataFinal;
 }
 
