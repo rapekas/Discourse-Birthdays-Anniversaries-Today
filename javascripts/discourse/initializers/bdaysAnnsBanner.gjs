@@ -2,6 +2,8 @@ import Component from "@glimmer/component";
 import { apiInitializer } from "discourse/lib/api";
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from "@ember/service";
+import { defaultHomepage } from "discourse/lib/utilities";
 
 
 /*
@@ -62,7 +64,8 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
-        
+            @service router;
+
             constructor() {
                 super(...arguments);
                 this.fetchAnnsData(); // Automatically fetch on initialization
@@ -108,18 +111,24 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             }
 
+            get isHomepage() {
+                const { currentRouteName } = this.router;
+                return currentRouteName === `discovery.${defaultHomepage()}`;
+            }
 
             <template>
-                {{#if this.annsData}}
-                  <div>Anniversaries data is loaded!</div>
-                  <!-- Display the anniversaries data -->
-                  <ul>
-                    {{#each this.annsData.anns_users as |username|}}
-                      <li>{{username}}</li>
-                    {{/each}}
-                  </ul>
-                {{else}}
-                  <div>Loading anniversaries...</div>
+                {{#if this.isHomepage}}
+                    <div class='bdaysannsbanner' id='bdaysannsbanner'>
+                        {{#if this.annsData}}
+                          <p>{{this.annsData.num_users}} users celebrating their anniversary!</p>
+                          <!-- Display the anniversaries data -->
+                            {{#each this.annsData.anns_users as |username|}}
+                                <span><a class='mention'>{{username}}</a></span>
+                            {{/each}}
+                        {{else}}
+                          <p>No one has their anniversary today!</p>
+                        {{/if}}
+                    </div>
                 {{/if}}
             </template>
 
