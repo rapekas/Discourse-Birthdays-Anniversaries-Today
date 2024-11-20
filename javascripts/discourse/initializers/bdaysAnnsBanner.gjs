@@ -34,7 +34,7 @@ function getAnnsFetch() {
     
     function RunCheckAnns(resp) {
         console.log(resp['anniversaries']);
-        let numberOfAnns = resp['anniversaries'];
+        let numberOfAnns = resp['anniversaries'].length;
         let allAnns = resp['anniversaries']; // Is a list of dicts
         console.log(allAnns);
         let allAnnsUsernames = [];
