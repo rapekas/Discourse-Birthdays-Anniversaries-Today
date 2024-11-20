@@ -56,7 +56,7 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                gotAnnsData = getAnnsFetch();
+                let gotAnnsData = getAnnsFetch();
                 console.log(gotAnnsData);
                 return {'num_anns': 1, 'anns_users': 'hi there'}
             }
