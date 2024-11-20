@@ -60,10 +60,9 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                getAnnsFetch().then(annsData => {
-                    console.log(annsData);
-                    return annsData;
-                });
+                const annsData = await getAnnsFetch();
+                console.log(annsData);
+                return annsData;
             }
         
             get getBdays() {
