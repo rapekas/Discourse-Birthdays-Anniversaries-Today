@@ -45,7 +45,7 @@ async function getAnnsFetch() {
     }
 
     annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-    console.log(annsDataFinal);  // Just to verify the result
+    //console.log(annsDataFinal);  // Just to verify the result
 
     return annsDataFinal; // Now return the data
 }
@@ -61,6 +61,7 @@ export default apiInitializer("1.14.0", (api) => {
         class bdaysAnnsBanner extends Component {
             get getAnns() {
                 getAnnsFetch().then(annsData => {
+                    console.log(annsData);
                     return annsData;
                 });
             }
