@@ -34,9 +34,8 @@ function getAnnsFetch() {
     
     function RunCheckAnns(resp) {
         //console.log(resp['anniversaries']);
-        let numberOfAnns = resp['anniversaries'].length;
+        let numberOfAnns = parseInt(resp['total_rows_anniversaries']);
         let allAnns = resp['anniversaries']; // Is a list of dicts
-        console.log(resp['total_rows_anniversaries']);
         let allAnnsUsernames = [];
         for (var annUserdata in allAnns) {
             console.log(allAnns[annUserdata]['username']);
@@ -57,7 +56,9 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                return getAnnsFetch();
+                gotAnnsData = getAnnsFetch();
+                console.log(gotAnnsData);
+                return {'num_anns': 1, 'anns_users': 'hi there'}
             }
         
             get getBdays() {
