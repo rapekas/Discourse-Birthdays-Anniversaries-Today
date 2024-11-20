@@ -42,6 +42,7 @@ function getAnnsFetch() {
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
         annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+        console.log(annsDataFinal);
     }
     //console.log(annsDataFinal);
     console.log(annsDataFinal)
