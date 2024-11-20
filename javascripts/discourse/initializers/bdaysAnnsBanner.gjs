@@ -2,25 +2,50 @@ import Component from "@glimmer/component";
 import { apiInitializer } from "discourse/lib/api";
 
 
-// Either works (fetch/XML)
-function getAnnsFetch() {
-    // Grab anniversaries
-    var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json());
-    console.log(fetcheddata);
-    function RunCheckAnns(resp) {
-        //console.log(resp['anniversaries']);
-        let numberOfAnns = resp['anniversaries'];
+/*
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "/cakeday/anniversaries/today.json");
+xhr.send();
+xhr.responseType = "json";
+xhr.onload = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        let resp = xhr.response;
+        let numberOfAnns = resp['total_rows_anniversaires'];
         let allAnns = resp['anniversaries']; // Is a list of dicts
-        //console.log(allAnns);
+        console.log(allAnns);
         let allAnnsUsernames = [];
         for (var annUserdata in allAnns) {
             console.log(allAnns[annUserdata]['username']);
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
         var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-        return annsOfData;
+        
     }
-    return RunCheckAnns(fetcheddata);
+};
+return annsOfData;
+*/
+
+
+// Either works (fetch/XML)
+function getAnnsFetch() {
+    var annsDataFinal;
+    // Grab anniversaries
+    var fetcheddata = fetch("/cakeday/anniversaries/today.json").then((response) => response.json()).then((json) => RunCheckAnns(json));
+    
+    function RunCheckAnns(resp) {
+        console.log(resp['anniversaries']);
+        let numberOfAnns = resp['anniversaries'];
+        let allAnns = resp['anniversaries']; // Is a list of dicts
+        console.log(allAnns);
+        let allAnnsUsernames = [];
+        for (var annUserdata in allAnns) {
+            console.log(allAnns[annUserdata]['username']);
+            allAnnsUsernames.push(allAnns[annUserdata]['username']);
+        }
+        var annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+    }
+    console.log(annsDataFinal);
+    return annsDataFinal;
 }
 
 
@@ -32,29 +57,7 @@ export default apiInitializer("1.14.0", (api) => {
         'above-main-container',
         class bdaysAnnsBanner extends Component {
             get getAnns() {
-                /*
-                const xhr = new XMLHttpRequest();
-                xhr.open("GET", "/cakeday/anniversaries/today.json");
-                xhr.send();
-                xhr.responseType = "json";
-                xhr.onload = () => {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        let resp = xhr.response;
-                        let numberOfAnns = resp['total_rows_anniversaires'];
-                        let allAnns = resp['anniversaries']; // Is a list of dicts
-                        console.log(allAnns);
-                        let allAnnsUsernames = [];
-                        for (var annUserdata in allAnns) {
-                            console.log(allAnns[annUserdata]['username']);
-                            allAnnsUsernames.push(allAnns[annUserdata]['username']);
-                        }
-                        var annsOfData = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-                        
-                    }
-                };
-                return annsOfData;
-                */
-                getAnnsFetch();
+                return getAnnsFetch();
             }
         
             get getBdays() {
