@@ -41,10 +41,10 @@ function getAnnsFetch() {
             //console.log(allAnns[annUserdata]['username']);
             allAnnsUsernames.push(allAnns[annUserdata]['username']);
         }
-        var annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+        annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
     }
     //console.log(annsDataFinal);
-    
+    console.log(annsDataFinal)
     return annsDataFinal;
 }
 
