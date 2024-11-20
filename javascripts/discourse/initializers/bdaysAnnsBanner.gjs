@@ -110,8 +110,17 @@ export default apiInitializer("1.14.0", (api) => {
 
 
             <template>
-<p>Hi</p>
-                      <p>{{this.getAnns.anns_users}}</p>
+                {{#if this.annsData}}
+                  <div>Anniversaries data is loaded!</div>
+                  <!-- Display the anniversaries data -->
+                  <ul>
+                    {{#each this.annsData.anns_users as |username|}}
+                      <li>{{username}}</li>
+                    {{/each}}
+                  </ul>
+                {{else}}
+                  <div>Loading anniversaries...</div>
+                {{/if}}
             </template>
 
         }
