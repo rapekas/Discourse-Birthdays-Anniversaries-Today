@@ -31,6 +31,8 @@ return annsOfData;
 
 
 // Either works (fetch/XML)
+
+// For anns
 async function getAnnsFetch() {
     // Declare annsDataFinal here
     let annsDataFinal;
@@ -52,6 +54,30 @@ async function getAnnsFetch() {
     //console.log(annsDataFinal);  // Just to verify the result
 
     return annsDataFinal; // Now return the data
+}
+
+// For bdays
+async function getBdaysFetch() {
+    // Declare bdaysDataFinal here
+    let bdaysDataFinal;
+
+    // Fetch birthdays data
+    const response = await fetch("/cakeday/birthdays/today.json");
+    const json = await response.json();
+
+    // Run the logic to process the data
+    let numberOfBdays = parseInt(json['total_rows_birthdays']);
+    let allBdays = json['birthdays']; // Is a list of dicts
+    let allBdaysUsernames = [];
+
+    for (let bdayUserdata of allBdays) {
+        allBdaysUsernames.push(bdayUserdata['username']);
+    }
+
+    bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
+    //console.log(annsDataFinal);  // Just to verify the result
+
+    return bdaysDataFinal; // Now return the data
 }
 
 
@@ -87,7 +113,32 @@ export default apiInitializer("1.14.0", (api) => {
         
                 this.annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
             }
-        
+
+            // Asynchronously fetch the data and update tracked property
+            @action
+            async fetchBdaysData() {
+                 // Declare bdaysDataFinal here
+                let bdaysDataFinal;
+            
+                // Fetch birthdays data
+                const response = await fetch("/cakeday/birthdays/today.json");
+                const json = await response.json();
+            
+                // Run the logic to process the data
+                let numberOfBdays = parseInt(json['total_rows_birthdays']);
+                let allBdays = json['birthdays']; // Is a list of dicts
+                let allBdaysUsernames = [];
+            
+                for (let bdayUserdata of allBdays) {
+                    allBdaysUsernames.push(bdayUserdata['username']);
+                }
+            
+                this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
+                //console.log(annsDataFinal);  // Just to verify the result
+            }
+
+
+            
             // Getter for the data
             get annsData() {
                 // If the data is not loaded yet, return null or any default value
@@ -95,20 +146,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
         
             get getBdays() {
-               fetch("/cakeday/birthdays/today.json")
-                   .then((response) => response.json())
-                   .then((json) => RunCheckBdays(json));
-                
-                function RunCheckBdays(resp) {
-                    let numberOfBdays = resp['total_rows_birthdays'];
-                    let allBdays = resp['birthdays']; // Is a list of dicts
-                    let allBdaysUsernames = [];
-                    for (var bdayUserdata in allBdays) {
-                        allBdaysUsernames.push(bdayUserdata['username'])
-                    }
-                    console.log({'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames});
-                    return {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
-                }
+               return this.bdaysDataFinal;
             }
 
             get isHomepage() {
@@ -119,15 +157,28 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                 {{#if this.isHomepage}}
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                        {{#if this.annsData}}
-                          <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
-                          <!-- Display the anniversaries data -->
-                            {{#each this.annsData.anns_users as |username|}}
-                                <span><a class='mention'>{{username}}</a></span>
-                            {{/each}}
-                        {{else}}
-                          <p>No one has their anniversary today!</p>
-                        {{/if}}
+                        <div class='anns'>
+                            {{#if this.annsData}}
+                              <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
+                              <!-- Display the anniversaries data -->
+                                {{#each this.annsData.anns_users as |username|}}
+                                    <span><a class='mention'>{{username}}</a></span>
+                                {{/each}}
+                            {{else}}
+                              <p>No one has their anniversary today!</p>
+                            {{/if}}
+                        </div>
+                        <div class='bdays'>
+                            {{#if this.bdaysData}}
+                              <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
+                              <!-- Display the birthday data -->
+                                {{#each this.bdaysData.bday_users as |username|}}
+                                    <span><a class='mention'>{{username}}</a></span>
+                                {{/each}}
+                            {{else}}
+                              <p>No one has their birthday today!</p>
+                            {{/if}}
+                        </div>
                     </div>
                 {{/if}}
             </template>
