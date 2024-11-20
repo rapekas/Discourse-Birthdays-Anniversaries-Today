@@ -1,5 +1,7 @@
 import Component from "@glimmer/component";
 import { apiInitializer } from "discourse/lib/api";
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 
 /*
@@ -58,11 +60,35 @@ export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
     api.renderInOutlet(
         'above-main-container',
-        class bdaysAnnsBanner extends Component {
-            get getAnns() {
-                const annsData = await getAnnsFetch();
-                console.log(annsData);
-                return annsData;
+        class BdaysAnnsBanner extends Component {
+            @tracked annsDataFinal = null;
+        
+            constructor() {
+                super(...arguments);
+                this.fetchAnnsData(); // Automatically fetch on initialization
+            }
+        
+            // Asynchronously fetch the data and update tracked property
+            @action
+            async fetchAnnsData() {
+                const response = await fetch("/cakeday/anniversaries/today.json");
+                const json = await response.json();
+        
+                let numberOfAnns = parseInt(json['total_rows_anniversaries']);
+                let allAnns = json['anniversaries']; // Is a list of dicts
+                let allAnnsUsernames = [];
+        
+                for (let annUserdata of allAnns) {
+                    allAnnsUsernames.push(annUserdata['username']);
+                }
+        
+                this.annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+            }
+        
+            // Getter for the data
+            get annsData() {
+                // If the data is not loaded yet, return null or any default value
+                return this.annsDataFinal;
             }
         
             get getBdays() {
