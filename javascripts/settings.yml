@@ -1,0 +1,8 @@
+banner_location:
+    default: above-main-container
+    type: enum
+    choices:
+        - above-main-container
+        - above-site-header
+        - below-site-header
+
