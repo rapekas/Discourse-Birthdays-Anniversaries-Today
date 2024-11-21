@@ -1,7 +1,7 @@
 div.bdaysannsbanner {
     text-align: center;
     color: var(--primary);
-    background-color: var(--tertiary-low);
+    background-color: var($banner_background_color);
     padding: 3px;
     //border-radius: 3px;
     margin: 3px;
