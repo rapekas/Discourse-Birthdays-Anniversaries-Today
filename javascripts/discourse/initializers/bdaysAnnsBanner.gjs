@@ -33,6 +33,7 @@ return annsOfData;
 // Either works (fetch/XML)
 
 // For anns
+/*
 async function getAnnsFetch() {
     // Declare annsDataFinal here
     let annsDataFinal;
@@ -79,7 +80,7 @@ async function getBdaysFetch() {
 
     return bdaysDataFinal; // Now return the data
 }
-
+*/
 
 
 
@@ -87,7 +88,7 @@ async function getBdaysFetch() {
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
     api.renderInOutlet(
-        'above-main-container',
+        settings.banner_location,
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
             @service router;
