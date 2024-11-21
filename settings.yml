@@ -9,12 +9,12 @@ banner_location:
 
 
 banner_text_color:
-    default: "--primary"
+    default: "var(--primary)"
     type: string
     description: "The text color of the banner."
 
 
 banner_background_color:
-    default: "--tertiary-low"
+    default: "var(--tertiary-low)"
     type: string
     description: "The background color of the banner."
