@@ -1,8 +1,8 @@
 {
-  "name": "Discourse Birthdays Anniversaries Today",
-  "about_url": "https://meta.discourse.org/t/discourse-persistent-banner/330575",
+  "name": "Discourse Birthdays/Anniversaries Today",
+  "about_url": "",
   "license_url": "https://github.com/NateDhaliwal/Discourse-Birthdays-Anniversaries-Today/blob/main/LICENSE",
   "component": true,
-  "theme_version": "5.0.0",
+  "theme_version": "1.0.0",
   "authors": "NateDhaliwal"
 }
