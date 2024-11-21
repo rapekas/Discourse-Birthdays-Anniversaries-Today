@@ -10,11 +10,11 @@ banner_location:
 
 banner_text_color:
     default: "--primary"
-    type: text
+    type: string
     description: "The text color of the banner."
 
 
 banner_background_color:
     default: "--tertiary-low"
-    type: text
+    type: string
     description: "The background color of the banner."
