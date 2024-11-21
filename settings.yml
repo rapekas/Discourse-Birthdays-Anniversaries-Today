@@ -8,7 +8,13 @@ banner_location:
     description: "The plugin outlet location of the banner."
 
 
+banner_text_color:
+    default: "--primary"
+    type: text
+    description: "The text color of the banner."
+
+
 banner_background_color:
-    default: "var(--tertiary-low)"
+    default: "--tertiary-low"
     type: text
     description: "The background color of the banner."
