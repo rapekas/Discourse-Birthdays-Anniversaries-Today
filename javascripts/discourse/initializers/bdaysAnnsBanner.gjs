@@ -174,9 +174,9 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                            <!--{{#if this.isAnnsFull}}-->
+                            
                                 <div class='anns'>
-                                    {{#if true}} <!--this.annsData-->
+                                    {{#if this.annsData}}
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
@@ -186,10 +186,9 @@ export default apiInitializer("1.14.0", (api) => {
                                         <p>No one has their anniversary today!</p>
                                     {{/if}}
                                 </div>
-                            <!--{{/if}}-->
-                            <!--{{#if this.isbdaysFull}}-->
+                            
                                 <div class='bdays'>
-                                    {{#if true}} <!--this.bdaysData-->
+                                    {{#if this.bdaysData}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
                                         <!-- Display the birthday data -->
                                         {{#each this.bdaysData.bdays_users as |username|}}
@@ -199,7 +198,6 @@ export default apiInitializer("1.14.0", (api) => {
                                         <p>No one has their birthday today!</p>
                                     {{/if}}
                                 </div>
-                            <!--{{/if}}-->
                         </div>
                     {{/if}}
             </template>
