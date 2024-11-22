@@ -154,7 +154,7 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-/*
+
             get isAnnsFull() {
                 if (this.annsData.anns_users == [] && settings.hide_unused_data) {
                     return false;
@@ -170,13 +170,14 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
-*/
+
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
                             
                                 <div class='anns'>
                                     {{#if this.annsData}}
+<p>{{this.isAnnsFull}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
