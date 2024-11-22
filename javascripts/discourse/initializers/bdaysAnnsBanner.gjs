@@ -172,7 +172,6 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             <template>
-                {{#if this.isAnnsFull && this.isBdaysFull}}
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
                             {{#if this.isAnnsFull}}
@@ -190,7 +189,7 @@ export default apiInitializer("1.14.0", (api) => {
                             {{/if}}
                             {{#if this.isbdaysFull}}
                                 <div class='bdays'>
-                                    {{#if this.bdaysData}}
+                                    {{#if this.bdaysDataFinal}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
                                         <!-- Display the birthday data -->
                                         {{#each this.bdaysData.bdays_users as |username|}}
@@ -203,7 +202,6 @@ export default apiInitializer("1.14.0", (api) => {
                             {{/if}}
                         </div>
                     {{/if}}
-                {{/if}}
             </template>
 
         }
