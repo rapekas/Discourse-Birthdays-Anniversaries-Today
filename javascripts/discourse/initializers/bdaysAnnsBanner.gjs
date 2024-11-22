@@ -154,15 +154,15 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-            get isAnnsFull {
+            get isAnnsFull() {
                 if (this.annsDataFinal.anns_users == [] && settings.hide_unused_data) {
                     return false;
                 } else {
                     return true;
                 }
             }
-            get isBdaysFull {
-                return false if thisbdaysDataFinal.bdays_users == [] && settings.hide_unused_data else true
+            get isBdaysFull() {
+                return false if this.bdaysDataFinal.bdays_users == [] && settings.hide_unused_data else true
             }
             <template>
                 {{#if this.isAnnsFull && this.isBdaysFull}}
