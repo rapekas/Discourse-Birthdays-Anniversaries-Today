@@ -154,9 +154,9 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-/*
+
             get isAnnsFull() {
-                if (annsData.num_users == 0) {
+                if (this.annsData.num_users == 0) {
                     if (settings.hide_unused_data) {
                         return false;
                     else {
@@ -168,7 +168,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isBdaysFull() {
-                if (bdaysData.num_users == 0) {
+                if (this.bdaysData.num_users == 0) {
                     if (settings.hide_unused_data) {
                         return false;
                     else {
@@ -178,14 +178,14 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
-*/
+
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
                             
                                 <div class='anns'>
                                     {{#if this.annsData}}
-                                        <p>{{this.annsData.keys()}}</p>
+                                        <p>{{this.annsData}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
