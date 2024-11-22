@@ -154,33 +154,44 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-
+            get isAnnsFull {
+                return false if this.annsDataFinal.anns_users == [] && settings.hide_unused_data else true
+            }
+            get isBdaysFull {
+                return false if thisbdaysDataFinal.bdays_users == [] && settings.hide_unused_data else true
+            }
             <template>
-                {{#if this.isHomepage}}
-                    <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                        <div class='anns'>
-                            {{#if this.annsData}}
-                              <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
-                              <!-- Display the anniversaries data -->
-                                {{#each this.annsData.anns_users as |username|}}
-                                    <span><a class='mention'>{{username}}</a></span>
-                                {{/each}}
-                            {{else}}
-                              <p>No one has their anniversary today!</p>
+                {{#if this.isAnnsFull && this.isBdaysFull}}
+                    {{#if this.isHomepage}}
+                        <div class='bdaysannsbanner' id='bdaysannsbanner'>
+                            {{#if this.isAnnsFull}}
+                                <div class='anns'>
+                                    {{#if this.annsData}}
+                                        <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
+                                        <!-- Display the anniversaries data -->
+                                        {{#each this.annsData.anns_users as |username|}}
+                                            <span><a class='mention'>{{username}}</a></span>
+                                        {{/each}}
+                                    {{else}}
+                                        <p>No one has their anniversary today!</p>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
+                            {{#if this.isbdaysFull}}
+                                <div class='bdays'>
+                                    {{#if this.bdaysData}}
+                                        <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
+                                        <!-- Display the birthday data -->
+                                        {{#each this.bdaysData.bdays_users as |username|}}
+                                            <span><a class='mention'>{{username}}</a></span>
+                                        {{/each}}
+                                    {{else}}
+                                        <p>No one has their birthday today!</p>
+                                    {{/if}}
+                                </div>
                             {{/if}}
                         </div>
-                        <div class='bdays'>
-                            {{#if this.bdaysData}}
-                              <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
-                              <!-- Display the birthday data -->
-                                {{#each this.bdaysData.bday_users as |username|}}
-                                    <span><a class='mention'>{{username}}</a></span>
-                                {{/each}}
-                            {{else}}
-                              <p>No one has their birthday today!</p>
-                            {{/if}}
-                        </div>
-                    </div>
+                    {{/if}}
                 {{/if}}
             </template>
 
