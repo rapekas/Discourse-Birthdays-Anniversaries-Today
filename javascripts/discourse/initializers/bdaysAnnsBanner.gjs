@@ -154,7 +154,7 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-
+/*
             get isAnnsFull() {
                 if (this.annsData.anns_users == [] && settings.hide_unused_data) {
                     return false;
@@ -170,11 +170,11 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
-
+*/
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                            {{#if this.isAnnsFull}}
+                            <!--{{#if this.isAnnsFull}}-->
                                 <div class='anns'>
                                     {{#if this.annsData}}
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
@@ -186,8 +186,8 @@ export default apiInitializer("1.14.0", (api) => {
                                         <p>No one has their anniversary today!</p>
                                     {{/if}}
                                 </div>
-                            {{/if}}
-                            {{#if this.isbdaysFull}}
+                            <!--{{/if}}-->
+                            <!--{{#if this.isbdaysFull}}-->
                                 <div class='bdays'>
                                     {{#if this.bdaysDataFinal}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
@@ -199,7 +199,7 @@ export default apiInitializer("1.14.0", (api) => {
                                         <p>No one has their birthday today!</p>
                                     {{/if}}
                                 </div>
-                            {{/if}}
+                            <!--{{/if}}-->
                         </div>
                     {{/if}}
             </template>
