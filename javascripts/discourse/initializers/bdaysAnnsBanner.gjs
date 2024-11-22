@@ -157,7 +157,7 @@ export default apiInitializer("1.14.0", (api) => {
 
             get isAnnsFull() {
                 if (this.annsData.num_users == 0 && settings.hide_unused_data == true) {
-                    return this.anndData.num_users;
+                    return this.annsData.num_users;
                 } else {
                     return settings.hide_unused_data;
                 }
@@ -177,7 +177,7 @@ export default apiInitializer("1.14.0", (api) => {
                             
                                 <div class='anns'>
                                     {{#if this.annsData}}
-                                        
+                                        <p>{{this.isAnnsFull}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
@@ -196,7 +196,7 @@ export default apiInitializer("1.14.0", (api) => {
                                             <span><a class='mention'>{{username}}</a></span>
                                         {{/each}}
                                     {{else}}
-                                        <p>{{this.isBdaysFull}}</p>
+                                        
                                         <p>No one has their birthday today!</p>
                                     {{/if}}
                                 </div>
