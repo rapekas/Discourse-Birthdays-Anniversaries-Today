@@ -146,7 +146,7 @@ export default apiInitializer("1.14.0", (api) => {
                 return this.annsDataFinal;
             }
         
-            get getBdays() {
+            get bdaysData() {
                return this.bdaysDataFinal;
             }
 
@@ -154,6 +154,7 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
+
             get isAnnsFull() {
                 if (this.annsDataFinal.anns_users == [] && settings.hide_unused_data) {
                     return false;
@@ -161,9 +162,15 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
+
             get isBdaysFull() {
-                return false if this.bdaysDataFinal.bdays_users == [] && settings.hide_unused_data else true
+                if (this.bdaysDataFinal.bdays_users == [] && settings.hide_unused_data) {
+                    return false;
+                } else {
+                    return true;
+                }
             }
+
             <template>
                 {{#if this.isAnnsFull && this.isBdaysFull}}
                     {{#if this.isHomepage}}
