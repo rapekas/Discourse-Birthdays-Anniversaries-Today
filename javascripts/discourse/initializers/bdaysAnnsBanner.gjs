@@ -156,7 +156,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFull() {
-                if (this.annsData.anns_users == [] && settings.hide_unused_data) {
+                if (this.annsData.num_users == 0 && settings.hide_unused_data) {
                     return false;
                 } else {
                     return true;
@@ -164,7 +164,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isBdaysFull() {
-                if (this.bdaysData.bdays_users == [] && settings.hide_unused_data) {
+                if (this.bdaysData.num_users == 0 && settings.hide_unused_data) {
                     return false;
                 } else {
                     return true;
