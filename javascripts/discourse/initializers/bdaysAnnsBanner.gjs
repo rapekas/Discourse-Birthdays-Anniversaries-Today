@@ -154,7 +154,7 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-
+/*
             get isAnnsFull() {
                 if (annsData.num_users == 0) {
                     if (settings.hide_unused_data) {
@@ -178,7 +178,7 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
-
+*/
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
