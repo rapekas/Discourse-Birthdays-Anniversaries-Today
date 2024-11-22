@@ -155,7 +155,11 @@ export default apiInitializer("1.14.0", (api) => {
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
             get isAnnsFull {
-                return false if this.annsDataFinal.anns_users == [] && settings.hide_unused_data else true
+                if (this.annsDataFinal.anns_users == [] && settings.hide_unused_data) {
+                    return false;
+                } else {
+                    return true;
+                }
             }
             get isBdaysFull {
                 return false if thisbdaysDataFinal.bdays_users == [] && settings.hide_unused_data else true
