@@ -157,17 +157,25 @@ export default apiInitializer("1.14.0", (api) => {
 
             get isAnnsFull() {
                 if (this.annsData.num_users == 0) {
-                    return this.annsData.num_users;
+                    if (settings.hide_unused_data) {
+                        return false;
+                    else {
+                        return true;
+                    }
                 } else {
-                    return settings.hide_unused_data;
+                    return true;
                 }
             }
 
             get isBdaysFull() {
                 if (this.bdaysData.num_users == 0) {
-                    return this.bdaysData.num_users;
+                    if (settings.hide_unused_data) {
+                        return false;
+                    else {
+                        return true;
+                    }
                 } else {
-                    return settings.hide_unused_data;
+                    return true;
                 }
             }
 
