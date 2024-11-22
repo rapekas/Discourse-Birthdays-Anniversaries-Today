@@ -156,18 +156,18 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFull() {
-                if (this.annsData.num_users == 0 && settings.hide_unused_data) {
-                    return false;
+                if (this.annsData.num_users == 0 && settings.hide_unused_data == true) {
+                    return this.anndData.num_users;
                 } else {
-                    return true;
+                    return settings.hide_unused_data;
                 }
             }
 
             get isBdaysFull() {
-                if (this.bdaysData.num_users == 0 && settings.hide_unused_data) {
-                    return false;
+                if (this.bdaysData.num_users == 0 && settings.hide_unused_data == true) {
+                    return this.bdaysData.num_users;
                 } else {
-                    return true;
+                    return settings.hide_unused_data;
                 }
             }
 
@@ -177,6 +177,7 @@ export default apiInitializer("1.14.0", (api) => {
                             
                                 <div class='anns'>
                                     {{#if this.annsData}}
+                                        <p>{{this.isAnnsFull}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
@@ -186,7 +187,7 @@ export default apiInitializer("1.14.0", (api) => {
                                         <p>No one has their anniversary today!</p>
                                     {{/if}}
                                 </div>
-                                <p>{{this.isAnnsFull}}</p>
+                                
                                 <div class='bdays'>
                                     {{#if this.bdaysData}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
