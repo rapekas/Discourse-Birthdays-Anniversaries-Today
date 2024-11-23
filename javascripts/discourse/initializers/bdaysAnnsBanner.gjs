@@ -197,7 +197,6 @@ export default apiInitializer("1.14.0", (api) => {
                                 </div>
                                 
                                 <div class='bdays'>
-<p>{{this.isBdaysFull}}</p>
                                     {{#if this.bdaysData}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
                                         <!-- Display the birthday data -->
