@@ -159,7 +159,7 @@ export default apiInitializer("1.14.0", (api) => {
                 if (this.annsData.num_users == 0) {
                     if (settings.hide_unused_data) {
                         return false;
-                    else {
+                    } else {
                         return true;
                     }
                 } else {
@@ -171,7 +171,7 @@ export default apiInitializer("1.14.0", (api) => {
                 if (this.bdaysData.num_users == 0) {
                     if (settings.hide_unused_data) {
                         return false;
-                    else {
+                    } else {
                         return true;
                     }
                 } else {
