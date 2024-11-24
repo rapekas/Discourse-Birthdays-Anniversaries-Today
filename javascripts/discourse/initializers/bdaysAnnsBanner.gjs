@@ -156,7 +156,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFull() {
-                if (this.annsData.num_users == 0) {
+                if (this.annsData.num_anns == 0) {
                     if (settings.hide_unused_data) {
                         return false;
                     } else {
@@ -168,7 +168,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isBdaysFull() {
-                if (this.bdaysData.num_users == 0) {
+                if (this.bdaysData.num_bdays == 0) {
                     if (settings.hide_unused_data) {
                         return false;
                     } else {
@@ -197,6 +197,7 @@ export default apiInitializer("1.14.0", (api) => {
                                 </div>
                                 
                                 <div class='bdays'>
+                                    <p>{{this.isBdaysFull}}</p>
                                     {{#if this.bdaysData}}
                                         <p>{{this.bdaysData.num_anns}} users are celebrating their birthday!</p>
                                         <!-- Display the birthday data -->
