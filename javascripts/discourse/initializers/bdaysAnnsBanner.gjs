@@ -91,11 +91,13 @@ export default apiInitializer("1.14.0", (api) => {
         settings.banner_location,
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
+            @tracked bdaysDataFinal = null;
             @service router;
 
             constructor() {
                 super(...arguments);
                 this.fetchAnnsData(); // Automatically fetch on initialization
+                this.fetchBdaysData();
             }
         
             // Asynchronously fetch the data and update tracked property
