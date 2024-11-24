@@ -222,7 +222,7 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                <p>{{this.isBdaysDataFull}}</p>
+                                <p>{{this.isAnnsDataFull}}</p>
                                 <div class='anns'>
                                     {{#if this.annsData}}
                                         <p>{{this.isAnnsFullSettingIncl}}</p>
@@ -245,7 +245,7 @@ export default apiInitializer("1.14.0", (api) => {
                                             <span><a class='mention'>{{username}}</a></span>
                                         {{/each}}
                                     {{else}}
-                                        <p>{{this.bdaysData.num_bdays}}</p>
+                                        
                                         <p>No one has their birthday today!</p>
                                     {{/if}}
                                 </div>
