@@ -226,7 +226,7 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                <p>{{this.isAnnsDataFull}}</p>
+                                
                                 <div class='anns'>
                                     {{#if this.annsData}}
                                         <p>{{this.isAnnsFullSettingIncl}}</p>
