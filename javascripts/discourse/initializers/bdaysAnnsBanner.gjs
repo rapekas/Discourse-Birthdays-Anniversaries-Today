@@ -144,24 +144,28 @@ export default apiInitializer("1.14.0", (api) => {
             
             // Getter for the data
             get annsData() {
+                return this.annsDataFinal;
+/*
                 if (this.annsDataFinal.num_anns != 0) {
                     // If the data is not loaded yet, return null or any default value
                     return this.annsDataFinal;
                 } else {
                     return false;
                 }
-  
+  */
             }
         
             // Getter for the data
             get bdaysData() {
+                return this.bdaysDataFinal;
+/*
                 if (this.bdaysDataFinal.num_bdays != 0) {
                     // If the data is not loaded yet, return null or any default value
                     return this.bdaysDataFinal;
                 } else {
                     return false;
                 }
-  
+  */
             }
 
             get isHomepage() {
