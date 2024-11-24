@@ -199,24 +199,28 @@ export default apiInitializer("1.14.0", (api) => {
             
             // Getter for the data
             get isAnnsDataFull() {
+                return (this.annsData.num_anns != 0);
+/*
                 if (this.annsData.num_anns != 0) {
                     // If the data is not loaded yet, return null or any default value
                     return true;
                 } else {
                     return false;
                 }
-  
+  */
             }
 
             // Getter for the data
             get isBdaysDataFull() {
-                if (this.bdaysData.num_anns != 0) {
+                return (this.bdaysData.num_bdays != 0);
+/*
+                if (this.bdaysData.num_bdays != 0) {
                     // If the data is not loaded yet, return null or any default value
                     return true;
                 } else {
                     return false;
                 }
-  
+  */
             }
 
             <template>
