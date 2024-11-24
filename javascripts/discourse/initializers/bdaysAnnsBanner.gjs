@@ -173,7 +173,7 @@ export default apiInitializer("1.14.0", (api) => {
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
 
-            get isAnnsFull() {
+            get isAnnsFullSettingIncl() {
                 if (this.annsData.num_anns == 0) {
                     if (settings.hide_unused_data) {
                         return false;
@@ -185,7 +185,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             }
 
-            get isBdaysFull() {
+            get isBdaysFullSettingIncl() {
                 if (this.bdaysData.num_bdays == 0) {
                     if (settings.hide_unused_data) {
                         return false;
@@ -196,14 +196,36 @@ export default apiInitializer("1.14.0", (api) => {
                     return true;
                 }
             }
+            
+            // Getter for the data
+            get isAnnsDataFull() {
+                if (this.annsData.num_anns != 0) {
+                    // If the data is not loaded yet, return null or any default value
+                    return true;
+                } else {
+                    return false;
+                }
+  
+            }
+
+            // Getter for the data
+            get isBdaysDataFull() {
+                if (this.bdaysData.num_anns != 0) {
+                    // If the data is not loaded yet, return null or any default value
+                    return true;
+                } else {
+                    return false;
+                }
+  
+            }
 
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                <p>{{this.annsData}}</p>
+                                <p>{{this.isAnnsDaraFull}}</p>
                                 <div class='anns'>
                                     {{#if this.annsData}}
-                                        <p>{{this.isAnnsFull}}</p>
+                                        <p>{{this.isAnnsFullSettingIncl}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
