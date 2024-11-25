@@ -169,7 +169,7 @@ export default apiInitializer("1.14.0", (api) => {
 
             <template>
                     {{#if this.isHomepage}}
-                        <!--{{#if this.isAnnsAndBdaysFullSettingIncl}}-->
+                       
                             <div class='bdaysannsbanner' id='bdaysannsbanner'>
                                 {{#if this.isAnnsFullSettingIncl}}
                                     <div class='anns'>
@@ -200,7 +200,7 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{/if}}
                             </div>
-                        <!--{{/if}}-->
+                        
                     {{/if}}
             </template>
 
