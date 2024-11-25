@@ -105,15 +105,15 @@ export default apiInitializer("1.14.0", (api) => {
             // Getter for the data
             get bdaysData() {
                 console.log(this.bdaysDataFinal);
-                return this.bdaysDataFinal;
-/*
-                if (this.bdaysDataFinal.num_bdays != 0) {
-                    // If the data is not loaded yet, return null or any default value
-                    return true;
-                } else {
-                    return false;
+                //return this.bdaysDataFinal;
+                if (this.bdaysDataFinal !== null) {
+                    if (this.bdaysDataFinal.num_bdays != 0) {
+                        // If the data is not loaded yet, return null or any default value
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
-  */
             }
 
             get isHomepage() {
