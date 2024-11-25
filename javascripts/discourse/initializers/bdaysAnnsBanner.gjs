@@ -77,7 +77,7 @@ async function getBdaysFetch() {
 
     bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
     //console.log(annsDataFinal);  // Just to verify the result
-    console.log(bdaysDataFinal.num_bdays);
+    
     return bdaysDataFinal; // Now return the data
 }
 */
@@ -137,7 +137,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             
                 this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
-                console.log(bdaysDataFinal
+                console.log(bdaysDataFinal.num_bdays);
                 //console.log(annsDataFinal);  // Just to verify the result
             }
 
