@@ -149,7 +149,7 @@ export default apiInitializer("1.14.0", (api) => {
                     }
                 }
             }
-
+/*
             get isAnnsAndBdaysFullSettingIncl() {
                 if (this.isAnnsFullSettingIncl) {
                     if (this.isBdaysFullSettingIncl) {
@@ -165,11 +165,11 @@ export default apiInitializer("1.14.0", (api) => {
                     }
                 }
             }
-
+*/
 
             <template>
                     {{#if this.isHomepage}}
-                        {{#if this.isAnnsAndBdaysFullSettingIncl}}
+                        <!--{{#if this.isAnnsAndBdaysFullSettingIncl}}-->
                             <div class='bdaysannsbanner' id='bdaysannsbanner'>
                                 {{#if this.isAnnsFullSettingIncl}}
                                     <div class='anns'>
@@ -200,7 +200,7 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{/if}}
                             </div>
-                        {{/if}}
+                        <!--{{/if}}-->
                     {{/if}}
             </template>
 
