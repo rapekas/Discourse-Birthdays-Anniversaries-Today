@@ -159,6 +159,7 @@ export default apiInitializer("1.14.0", (api) => {
         
             // Getter for the data
             get bdaysData() {
+                console.log(this.bdaysDataFinal);
                 return this.bdaysDataFinal;
 /*
                 if (this.bdaysDataFinal.num_bdays != 0) {
