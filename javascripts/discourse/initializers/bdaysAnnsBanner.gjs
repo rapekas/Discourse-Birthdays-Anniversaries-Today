@@ -123,6 +123,7 @@ export default apiInitializer("1.14.0", (api) => {
             get isAnnsFullSettingIncl() {
                 let annsDataVar = this.annsDataFinal;
                 if (annsDataVar !== null) {
+                    console.log(annsDataVar);
                     if (annsDataVar.num_bdays == 0) {
                         if (settings.hide_unused_data) {
                             return false;
