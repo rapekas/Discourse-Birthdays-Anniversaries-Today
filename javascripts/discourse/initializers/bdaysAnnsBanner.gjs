@@ -137,6 +137,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             
                 this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
+                console.log(bdaysDataFinal
                 //console.log(annsDataFinal);  // Just to verify the result
             }
 
