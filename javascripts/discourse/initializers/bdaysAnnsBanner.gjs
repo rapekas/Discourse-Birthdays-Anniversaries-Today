@@ -172,6 +172,7 @@ export default apiInitializer("1.14.0", (api) => {
                                         {{/if}}
                                     </div>
                                 {{/if}}
+                                <br />
                                 {{#if this.isBdaysFullSettingsIncl}}
                                     <div class='bdays'>
                                         {{#if this.bdaysData}}
