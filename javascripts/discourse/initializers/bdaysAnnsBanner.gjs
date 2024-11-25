@@ -91,25 +91,24 @@ export default apiInitializer("1.14.0", (api) => {
             
             // Getter for the data
             get annsData() {
-                return this.annsDataFinal;
-/*
-                if (this.annsDataFinal.num_anns != 0) {
-                    // If the data is not loaded yet, return null or any default value
-                    return this.annsDataFinal;
-                } else {
-                    return false;
+                //return this.annsDataFinal;
+                if (this.annsDataFinal !== null) {
+                    if (this.annsDataFinal.num_anns != 0) {
+                        // If the data is not loaded yet, return null or any default value
+                        return this.annsDataFinal;
+                    } else {
+                        return false;
+                    }
                 }
-  */
             }
         
             // Getter for the data
             get bdaysData() {
-                console.log(this.bdaysDataFinal);
                 //return this.bdaysDataFinal;
                 if (this.bdaysDataFinal !== null) {
                     if (this.bdaysDataFinal.num_bdays != 0) {
                         // If the data is not loaded yet, return null or any default value
-                        return true;
+                        return this.bdaysDataFinal;
                     } else {
                         return false;
                     }
@@ -145,39 +144,13 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             }
             
-            // Getter for the data
-            get isAnnsDataFull() {
-                return (this.annsData.num_anns != 0);
-/*
-                if (this.annsData.num_anns != 0) {
-                    // If the data is not loaded yet, return null or any default value
-                    return true;
-                } else {
-                    return false;
-                }
-  */
-            }
-
-            // Getter for the data
-            get isBdaysDataFull() {
-                return (this.bdaysData.num_bdays != 0);
-/*
-                if (this.bdaysData.num_bdays != 0) {
-                    // If the data is not loaded yet, return null or any default value
-                    return true;
-                } else {
-                    return false;
-                }
-  */
-            }
 
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                
+                                <p>{{isAnnsFullSettingIncl}}</p>
                                 <div class='anns'>
                                     {{#if this.annsData}}
-                                        <p>{{this.isAnnsDataFull}}</p>
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
