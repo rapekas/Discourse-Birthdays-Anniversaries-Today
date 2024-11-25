@@ -133,14 +133,17 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isBdaysFullSettingIncl() {
-                if (this.bdaysData.num_bdays == 0) {
-                    if (settings.hide_unused_data) {
-                        return false;
+                let bdaysDataVar = this.bdaysData;
+                if (bdaysDataVar !== null) {
+                    if (bdaysDataVar.num_bdays == 0) {
+                        if (settings.hide_unused_data) {
+                            return false;
+                        } else {
+                            return true;
+                        }
                     } else {
                         return true;
                     }
-                } else {
-                    return true;
                 }
             }
             
@@ -148,7 +151,7 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                <p>{{this.isAnnsFullSettingIncl}}</p>
+                                <p>{{this.isBdaysFullSettingIncl}}</p>
                                 <div class='anns'>
                                     {{#if this.annsData}}
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
