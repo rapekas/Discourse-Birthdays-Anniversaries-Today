@@ -140,7 +140,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isBdaysFullSettingIncl() {
-                return false;
+                return true;
 /*
                 let bdaysDataVar = this.bdaysDataFinal;
                 if (bdaysDataVar !== null) {
