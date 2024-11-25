@@ -30,60 +30,6 @@ return annsOfData;
 */
 
 
-// Either works (fetch/XML)
-
-// For anns
-/*
-async function getAnnsFetch() {
-    // Declare annsDataFinal here
-    let annsDataFinal;
-
-    // Fetch anniversaries data
-    const response = await fetch("/cakeday/anniversaries/today.json");
-    const json = await response.json();
-
-    // Run the logic to process the data
-    let numberOfAnns = parseInt(json['total_rows_anniversaries']);
-    let allAnns = json['anniversaries']; // Is a list of dicts
-    let allAnnsUsernames = [];
-
-    for (let annUserdata of allAnns) {
-        allAnnsUsernames.push(annUserdata['username']);
-    }
-
-    annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
-    //console.log(annsDataFinal);  // Just to verify the result
-
-    return annsDataFinal; // Now return the data
-}
-
-// For bdays
-async function getBdaysFetch() {
-    // Declare bdaysDataFinal here
-    let bdaysDataFinal;
-
-    // Fetch birthdays data
-    const response = await fetch("/cakeday/birthdays/today.json");
-    const json = await response.json();
-
-    // Run the logic to process the data
-    let numberOfBdays = parseInt(json['total_rows_birthdays']);
-    let allBdays = json['birthdays']; // Is a list of dicts
-    let allBdaysUsernames = [];
-
-    for (let bdayUserdata of allBdays) {
-        allBdaysUsernames.push(bdayUserdata['username']);
-    }
-
-    bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
-    //console.log(annsDataFinal);  // Just to verify the result
-    
-    return bdaysDataFinal; // Now return the data
-}
-*/
-
-
-
 
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
@@ -137,8 +83,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
             
                 this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
-                console.log(bdaysDataFinal);
-                console.log(this.bdaysDataFinal);
+                
                 //console.log(annsDataFinal);  // Just to verify the result
             }
 
@@ -160,15 +105,15 @@ export default apiInitializer("1.14.0", (api) => {
             // Getter for the data
             get bdaysData() {
                 console.log(this.bdaysDataFinal);
-                return this.bdaysDataFinal;
-/*
+                //return this.bdaysDataFinal;
+
                 if (this.bdaysDataFinal.num_bdays != 0) {
                     // If the data is not loaded yet, return null or any default value
-                    return this.bdaysDataFinal;
+                    return true;
                 } else {
                     return false;
                 }
-  */
+  
             }
 
             get isHomepage() {
