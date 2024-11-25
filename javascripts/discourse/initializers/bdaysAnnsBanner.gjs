@@ -121,14 +121,17 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFullSettingIncl() {
-                if (this.annsData.num_anns == 0) {
-                    if (settings.hide_unused_data) {
-                        return false;
+                let annsDataVar = this.annsDataFinal;
+                if (annsDataVar !== null) {
+                    if (annsDataVar.num_bdays == 0) {
+                        if (settings.hide_unused_data) {
+                            return false;
+                        } else {
+                            return true;
+                        }
                     } else {
                         return true;
                     }
-                } else {
-                    return true;
                 }
             }
 
