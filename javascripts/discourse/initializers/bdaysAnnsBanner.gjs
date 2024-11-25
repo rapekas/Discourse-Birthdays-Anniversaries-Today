@@ -148,7 +148,7 @@ export default apiInitializer("1.14.0", (api) => {
             <template>
                     {{#if this.isHomepage}}
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                                <p>{{isAnnsFullSettingIncl}}</p>
+                                <p>{{this.isAnnsFullSettingIncl}}</p>
                                 <div class='anns'>
                                     {{#if this.annsData}}
                                         <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
