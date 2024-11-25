@@ -151,7 +151,19 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsAndBdaysFullSettingIncl() {
-                return (this.isAnnsFullSettingIncl && this.isBdaysFullSettingIncl);
+                if (this.isAnnsFullSettingIncl) {
+                    if (this.isBdaysFullSettingIncl) {
+                        return true;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    if (this.isBdaysFullSettingIncl) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
             }
 
 
