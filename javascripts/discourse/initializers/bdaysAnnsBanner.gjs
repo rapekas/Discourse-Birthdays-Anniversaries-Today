@@ -121,6 +121,8 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFullSettingIncl() {
+                return true;
+/*
                 let annsDataVar = this.annsDataFinal;
                 if (annsDataVar !== null) {
                     console.log(annsDataVar);
@@ -134,9 +136,12 @@ export default apiInitializer("1.14.0", (api) => {
                         return true;
                     }
                 }
+*/
             }
 
             get isBdaysFullSettingIncl() {
+                return false;
+/*
                 let bdaysDataVar = this.bdaysDataFinal;
                 if (bdaysDataVar !== null) {
                     console.log(bdaysDataVar);
@@ -150,6 +155,7 @@ export default apiInitializer("1.14.0", (api) => {
                         return true;
                     }
                 }
+*/
             }
 /*
             get isAnnsAndBdaysFullSettingIncl() {
