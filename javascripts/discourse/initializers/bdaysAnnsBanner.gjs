@@ -148,7 +148,7 @@ export default apiInitializer("1.14.0", (api) => {
                     
                     if (bdaysDataVar.num_bdays == 0) {
                         if (settings.hide_unused_data) {
-                            console.log("Setting true);
+                            console.log("Setting true");
                             return false;
                         } else {
                             console.log("Setting false");
