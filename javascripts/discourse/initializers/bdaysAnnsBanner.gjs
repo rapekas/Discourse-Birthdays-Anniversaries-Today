@@ -82,7 +82,7 @@ export default apiInitializer("1.14.0", (api) => {
                     allBdaysUsernames.push(bdayUserdata['username']);
                 }
             
-                this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames, 'hidden': false};
+                this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames, 'visible': true, 'isFilled': true};
                 
                 //console.log(annsDataFinal);  // Just to verify the result
             }
@@ -110,12 +110,15 @@ export default apiInitializer("1.14.0", (api) => {
                         console.log("Is not null");
                         if (this.bdaysDataFinal.num_bdays == 0) {
                             if (settings.hide_unused_data) {
-                                this.bdaysDataFinal.hidden = true;
+                                this.bdaysDataFinal.isFilled = false;
+                                this.bdaysDataFinal.visible = false;
                             } else {
-                                this.bdaysDataFinal.hidden = false;
+                                this.bdaysDataFinal.isFilled = false;
+                                this.bdaysDataFinal.visible = true;
                             }
                         } else {
-                            this.bdaysDataFinal.hidden = false;
+                            this.bdaysDataFinal.isFilled = true;
+                            this.bdaysDataFinal.visible = true;
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -207,9 +210,9 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{/if}}
                                 <br />
-                                
+                                {{#if bdaysData.visible}}
                                     <div class='bdays'>
-                                        {{#if !bdaysData.hidden}}
+                                        {{#if bdaysData.isFilled}}
                                             <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
                                             <!-- Display the birthday data -->
                                             {{#each this.bdaysData.bdays_users as |username|}}
@@ -219,7 +222,7 @@ export default apiInitializer("1.14.0", (api) => {
                                             <p>No one is celebrating their birthday today!</p>
                                         {{/if}}
                                     </div>
-                                
+                                {{/if}}
                             </div>
                         
                     {{/if}}
