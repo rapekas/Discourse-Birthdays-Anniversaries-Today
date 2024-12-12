@@ -143,6 +143,7 @@ export default apiInitializer("1.14.0", (api) => {
                 //return true;
 
                 let bdaysDataVar = this.bdaysDataFinal;
+                console.log(bdaysDataVar);
                 if (bdaysDataVar !== null) {
                     console.log(bdaysDataVar);
                     if (bdaysDataVar.num_bdays == 0) {
