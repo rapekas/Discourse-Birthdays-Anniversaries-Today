@@ -145,7 +145,7 @@ export default apiInitializer("1.14.0", (api) => {
                 let bdaysDataVar = this.bdaysDataFinal;
                 console.log(bdaysDataVar);
                 if (bdaysDataVar !== null) {
-                    
+                    console.log("Is not null");
                     if (bdaysDataVar.num_bdays == 0) {
                         if (settings.hide_unused_data) {
                             console.log("Setting true");
