@@ -82,7 +82,7 @@ export default apiInitializer("1.14.0", (api) => {
                     allBdaysUsernames.push(bdayUserdata['username']);
                 }
             
-                this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames};
+                this.bdaysDataFinal = {'num_bdays': numberOfBdays, 'bdays_users': allBdaysUsernames, 'hidden': false};
                 
                 //console.log(annsDataFinal);  // Just to verify the result
             }
@@ -107,6 +107,17 @@ export default apiInitializer("1.14.0", (api) => {
                 //return this.bdaysDataFinal;
                 if (this.bdaysDataFinal !== null) {
                     if (this.bdaysDataFinal.num_bdays != 0) {
+                        console.log("Is not null");
+                        if (this.bdaysDataFinal.num_bdays == 0) {
+                            if (settings.hide_unused_data) {
+                                this.bdaysDataFinal.hidden = true;
+                            } else {
+                                this.bdaysDataFinal.hidden = false;
+                            }
+                        } else {
+                            this.bdaysDataFinal.hidden = false;
+                        }
+                        
                         // If the data is not loaded yet, return null or any default value
                         return this.bdaysDataFinal;
                     } else {
@@ -196,19 +207,19 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{/if}}
                                 <br />
-                                {{#if this.isBdaysFullSettingsIncl}}
+                                
                                     <div class='bdays'>
-                                        <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
-                                        <!-- Display the birthday data -->
-                                        {{#each this.bdaysData.bdays_users as |username|}}
-                                            <span><a class='mention'>{{username}}</a></span>
-                                        {{/each}}
+                                        {{#if !bdaysData.hidden}}
+                                            <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
+                                            <!-- Display the birthday data -->
+                                            {{#each this.bdaysData.bdays_users as |username|}}
+                                                <span><a class='mention'>{{username}}</a></span>
+                                            {{/each}}
+                                        {{else}}
+                                            <p>No one is celebrating their birthday today!</p>
+                                        {{/if}}
                                     </div>
-                                {{else}}
-                                    <div class='bdays'>
-                                        <p>No one has their birthday today!</p>
-                                    </div>
-                                {{/if}}
+                                
                             </div>
                         
                     {{/if}}
