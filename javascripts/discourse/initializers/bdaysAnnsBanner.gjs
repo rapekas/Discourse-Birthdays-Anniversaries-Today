@@ -121,8 +121,8 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             get isAnnsFullSettingIncl() {
-                return true;
-/*
+                //return true;
+
                 let annsDataVar = this.annsDataFinal;
                 if (annsDataVar !== null) {
                     console.log(annsDataVar);
@@ -136,7 +136,7 @@ export default apiInitializer("1.14.0", (api) => {
                         return true;
                     }
                 }
-*/
+
             }
 
             get isBdaysFullSettingIncl() {
@@ -178,7 +178,6 @@ export default apiInitializer("1.14.0", (api) => {
 
             <template>
                     {{#if this.isHomepage}}
-                       
                             <div class='bdaysannsbanner' id='bdaysannsbanner'>
                                 {{#if this.isAnnsFullSettingIncl}}
                                     <div class='anns'>
