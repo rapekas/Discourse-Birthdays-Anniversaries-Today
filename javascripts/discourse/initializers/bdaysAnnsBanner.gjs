@@ -195,15 +195,11 @@ export default apiInitializer("1.14.0", (api) => {
                                 <br />
                                 {{#if this.isBdaysFullSettingsIncl}}
                                     <div class='bdays'>
-                                        {{#if this.bdaysData}}
-                                            <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
-                                            <!-- Display the birthday data -->
-                                            {{#each this.bdaysData.bdays_users as |username|}}
-                                                <span><a class='mention'>{{username}}</a></span>
-                                            {{/each}}
-                                        {{else}}
-                                            <p>No one has their birthday today!</p>
-                                        {{/if}}
+                                        <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
+                                        <!-- Display the birthday data -->
+                                        {{#each this.bdaysData.bdays_users as |username|}}
+                                            <span><a class='mention'>{{username}}</a></span>
+                                        {{/each}}
                                     </div>
                                 {{else}}
                                     <div class='bdays'>
