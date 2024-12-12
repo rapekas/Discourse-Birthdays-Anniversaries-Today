@@ -207,7 +207,7 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{else}}
                                     <div class='bdays'>
-                                        <p><p>No one has their birthday today!</p>
+                                        <p>No one has their birthday today!</p>
                                     </div>
                                 {{/if}}
                             </div>
