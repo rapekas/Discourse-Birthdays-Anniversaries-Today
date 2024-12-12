@@ -158,7 +158,7 @@ export default apiInitializer("1.14.0", (api) => {
                 }
 
             }
-
+/*
             get isAnnsAndBdaysFullSettingIncl() {
                 if (this.isAnnsFullSettingIncl) {
                     if (this.isBdaysFullSettingIncl) {
@@ -174,7 +174,7 @@ export default apiInitializer("1.14.0", (api) => {
                     }
                 }
             }
-
+*/
 
             <template>
                     {{#if this.isHomepage}}
@@ -202,9 +202,12 @@ export default apiInitializer("1.14.0", (api) => {
                                                 <span><a class='mention'>{{username}}</a></span>
                                             {{/each}}
                                         {{else}}
-                                            
                                             <p>No one has their birthday today!</p>
                                         {{/if}}
+                                    </div>
+                                {{else}}
+                                    <div class='bdays'>
+                                        <p><p>No one has their birthday today!</p>
                                     </div>
                                 {{/if}}
                             </div>
