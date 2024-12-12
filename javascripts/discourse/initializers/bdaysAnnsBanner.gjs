@@ -106,8 +106,6 @@ export default apiInitializer("1.14.0", (api) => {
             get bdaysData() {
                 //return this.bdaysDataFinal;
                 if (this.bdaysDataFinal !== null) {
-                    if (this.bdaysDataFinal.num_bdays != 0) {
-                        console.log("Is not null");
                         if (this.bdaysDataFinal.num_bdays == 0) {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
@@ -123,9 +121,6 @@ export default apiInitializer("1.14.0", (api) => {
                         
                         // If the data is not loaded yet, return null or any default value
                         return this.bdaysDataFinal;
-                    } else {
-                        return false;
-                    }
                 }
             }
 
