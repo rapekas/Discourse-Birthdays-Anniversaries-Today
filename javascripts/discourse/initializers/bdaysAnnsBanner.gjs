@@ -60,7 +60,7 @@ export default apiInitializer("1.14.0", (api) => {
                     allAnnsUsernames.push(annUserdata['username']);
                 }
         
-                this.annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames};
+                this.annsDataFinal = {'num_anns': numberOfAnns, 'anns_users': allAnnsUsernames, 'visible': true, 'isFilled': true};
             }
 
             // Asynchronously fetch the data and update tracked property
@@ -93,12 +93,21 @@ export default apiInitializer("1.14.0", (api) => {
             get annsData() {
                 //return this.annsDataFinal;
                 if (this.annsDataFinal !== null) {
-                    if (this.annsDataFinal.num_anns != 0) {
+                        if (this.annsDataFinal.num_anns == 0) {
+                            if (settings.hide_unused_data) {
+                                this.annsDataFinal.isFilled = false;
+                                this.annsDataFinal.visible = false;
+                            } else {
+                                this.annsDataFinal.isFilled = false;
+                                this.annsDataFinal.visible = true;
+                            }
+                        } else {
+                            this.annsDataFinal.isFilled = true;
+                            this.annsDataFinal.visible = true;
+                        }
+                        
                         // If the data is not loaded yet, return null or any default value
                         return this.annsDataFinal;
-                    } else {
-                        return false;
-                    }
                 }
             }
         
@@ -128,7 +137,7 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-
+/*
             get isAnnsFullSettingIncl() {
                 //return true;
 
@@ -170,6 +179,8 @@ export default apiInitializer("1.14.0", (api) => {
                 }
 
             }
+*/
+
 /*
             get isAnnsAndBdaysFullSettingIncl() {
                 if (this.isAnnsFullSettingIncl) {
