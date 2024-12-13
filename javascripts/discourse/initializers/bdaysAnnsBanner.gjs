@@ -205,9 +205,9 @@ export default apiInitializer("1.14.0", (api) => {
                                     </div>
                                 {{/if}}
                                 <br />
-                                {{#if bdaysData.visible}}
+                                {{#if this.bdaysData.visible}}
                                     <div class='bdays'>
-                                        {{#if bdaysData.isFilled}}
+                                        {{#if this.bdaysData.isFilled}}
                                             <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
                                             <!-- Display the birthday data -->
                                             {{#each this.bdaysData.bdays_users as |username|}}
