@@ -38,6 +38,7 @@ export default apiInitializer("1.14.0", (api) => {
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
             @tracked bdaysDataFinal = null;
+            @tracked bothBannersVisible = false;
             @service router;
 
             constructor() {
@@ -88,8 +89,6 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
 
-            var bothBannersVisible = false;
-
             // Getter for the data
             get annsData() {
                 //return this.annsDataFinal;
@@ -98,16 +97,16 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = false;
-                                bothBannersVisible = true;
+                                this.bothBannersVisible = true;
                             } else {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = true;
-                                bothBannersVisible = false;
+                                this.bothBannersVisible = false;
                             }
                         } else {
                             this.annsDataFinal.isFilled = true;
                             this.annsDataFinal.visible = true;
-                            bothBannersVisible = false;
+                            this.bothBannersVisible = false;
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -124,17 +123,17 @@ export default apiInitializer("1.14.0", (api) => {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
                                 if (bothBannersVisible == true) {
-                                    bothBannersVisible = true;
+                                    this.bothBannersVisible = true;
                                 } else {
-                                    bothBannersVisible = false;
+                                    this.bothBannersVisible = false;
                                 }
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
                                 if (bothBannersVisible == true) {
-                                    bothBannersVisible = false;
+                                    this.bothBannersVisible = false;
                                 } else {
-                                    bothBannersVisible = false;
+                                    this.bothBannersVisible = false;
                                 }
                             }
 
@@ -142,9 +141,9 @@ export default apiInitializer("1.14.0", (api) => {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
                             if (bothBannersVisible == true) {
-                                bothBannersVisible = false;
+                                this.bothBannersVisible = false;
                             } else {
-                                bothBannersVisible = false;
+                                this.bothBannersVisible = false;
                             }
                         }
                         
@@ -158,9 +157,6 @@ export default apiInitializer("1.14.0", (api) => {
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
 
-            get bothBannersShowing() {
-                return bothBannersVisible;
-            }
 
             <template>
                 {{#if this.isHomepage}}
