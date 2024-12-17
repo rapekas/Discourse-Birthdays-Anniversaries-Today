@@ -88,7 +88,7 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
 
-            var bothBannersVisible;
+            var bothBannersVisible = false;
 
             // Getter for the data
             get annsData() {
