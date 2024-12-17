@@ -88,7 +88,8 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
 
-            
+            var bothBannersVisible;
+
             // Getter for the data
             get annsData() {
                 //return this.annsDataFinal;
@@ -97,13 +98,16 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = false;
+                                bothBannersVisible = true;
                             } else {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = true;
+                                bothBannersVisible = false;
                             }
                         } else {
                             this.annsDataFinal.isFilled = true;
                             this.annsDataFinal.visible = true;
+                            bothBannersVisible = false;
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -119,13 +123,29 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
+                                if (bothBannersVisible == true) {
+                                    bothBannersVisible = true;
+                                } else {
+                                    bothBannersVisible = false;
+                                }
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
+                                if (bothBannersVisible == true) {
+                                    bothBannersVisible = false;
+                                } else {
+                                    bothBannersVisible = false;
+                                }
                             }
+
                         } else {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
+                            if (bothBannersVisible == true) {
+                                bothBannersVisible = false;
+                            } else {
+                                bothBannersVisible = false;
+                            }
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -137,70 +157,14 @@ export default apiInitializer("1.14.0", (api) => {
                 const { currentRouteName } = this.router;
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
-/*
-            get isAnnsFullSettingIncl() {
-                //return true;
 
-                let annsDataVar = this.annsDataFinal;
-                if (annsDataVar !== null) {
-                    console.log(annsDataVar);
-                    if (annsDataVar.num_bdays == 0) {
-                        if (settings.hide_unused_data) {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    } else {
-                        return true;
-                    }
-                }
-
+            get bothBannersShowing() {
+                return bothBannersVisible;
             }
-
-            get isBdaysFullSettingIncl() {
-                //return true;
-
-                let bdaysDataVar = this.bdaysDataFinal;
-                console.log(bdaysDataVar);
-                if (bdaysDataVar !== null) {
-                    console.log("Is not null");
-                    if (bdaysDataVar.num_bdays == 0) {
-                        if (settings.hide_unused_data) {
-                            console.log("Setting true");
-                            return false;
-                        } else {
-                            console.log("Setting false");
-                            return true;
-                        }
-                    } else {
-                        console.log("Num not 0")
-                        return true;
-                    }
-                }
-
-            }
-*/
-
-/*
-            get isAnnsAndBdaysFullSettingIncl() {
-                if (this.isAnnsFullSettingIncl) {
-                    if (this.isBdaysFullSettingIncl) {
-                        return true;
-                    } else {
-                        return true;
-                    }
-                } else {
-                    if (this.isBdaysFullSettingIncl) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-*/
 
             <template>
                 {{#if this.isHomepage}}
+                    <p>{{this.bothBannersVisible}}</p>
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
                         {{#if this.annsData.visible}}
                             <div class='anns'>
