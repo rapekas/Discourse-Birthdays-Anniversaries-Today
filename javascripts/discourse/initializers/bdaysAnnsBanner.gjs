@@ -122,7 +122,7 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
-                                if (bothBannersVisible == true) {
+                                if (this.bothBannersVisible == true) {
                                     this.bothBannersVisible = true;
                                 } else {
                                     this.bothBannersVisible = false;
@@ -130,7 +130,7 @@ export default apiInitializer("1.14.0", (api) => {
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
-                                if (bothBannersVisible == true) {
+                                if (this.bothBannersVisible == true) {
                                     this.bothBannersVisible = false;
                                 } else {
                                     this.bothBannersVisible = false;
@@ -140,7 +140,7 @@ export default apiInitializer("1.14.0", (api) => {
                         } else {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
-                            if (bothBannersVisible == true) {
+                            if (this.bothBannersVisible == true) {
                                 this.bothBannersVisible = false;
                             } else {
                                 this.bothBannersVisible = false;
