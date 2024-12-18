@@ -96,16 +96,16 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = false;
-                                bothBannersVisible = true;
+                                bothBannersVisible = false;
                             } else {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = true;
-                                bothBannersVisible = false;
+                                bothBannersVisible = true;
                             }
                         } else {
                             this.annsDataFinal.isFilled = true;
                             this.annsDataFinal.visible = true;
-                            bothBannersVisible = false;
+                            bothBannersVisible = true;
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -121,28 +121,28 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
-                                if (bothBannersVisible == true) {
-                                    bothBannersVisible = true;
-                                } else {
+                                if (bothBannersVisible == false) {
                                     bothBannersVisible = false;
+                                } else {
+                                    bothBannersVisible = true;
                                 }
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
-                                if (bothBannersVisible == true) {
+                                if (bothBannersVisible == false) {
                                     bothBannersVisible = false;
                                 } else {
-                                    bothBannersVisible = false;
+                                    bothBannersVisible = true;
                                 }
                             }
 
                         } else {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
-                            if (bothBannersVisible == true) {
+                            if (bothBannersVisible == false) {
                                 bothBannersVisible = false;
                             } else {
-                                bothBannersVisible = false;
+                                bothBannersVisible = true;
                             }
                         }
                         
