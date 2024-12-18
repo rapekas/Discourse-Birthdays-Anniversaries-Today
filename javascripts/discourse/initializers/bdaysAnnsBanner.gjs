@@ -29,7 +29,7 @@ xhr.onload = () => {
 return annsOfData;
 */
 
-let bothBannersVisible = false;
+var bothBannersVisible = false;
 
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
