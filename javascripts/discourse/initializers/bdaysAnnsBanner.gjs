@@ -29,7 +29,7 @@ xhr.onload = () => {
 return annsOfData;
 */
 
-
+let bothBannersVisible = false;
 
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
@@ -38,7 +38,6 @@ export default apiInitializer("1.14.0", (api) => {
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
             @tracked bdaysDataFinal = null;
-            @tracked bothBannersVisible = false;
             @service router;
 
             constructor() {
@@ -97,16 +96,16 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = false;
-                                this.bothBannersVisible = true;
+                                bothBannersVisible = true;
                             } else {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = true;
-                                this.bothBannersVisible = false;
+                                bothBannersVisible = false;
                             }
                         } else {
                             this.annsDataFinal.isFilled = true;
                             this.annsDataFinal.visible = true;
-                            this.bothBannersVisible = false;
+                            bothBannersVisible = false;
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -122,28 +121,28 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
-                                if (this.bothBannersVisible == true) {
-                                    this.bothBannersVisible = true;
+                                if (bothBannersVisible == true) {
+                                    bothBannersVisible = true;
                                 } else {
-                                    this.bothBannersVisible = false;
+                                    bothBannersVisible = false;
                                 }
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
-                                if (this.bothBannersVisible == true) {
-                                    this.bothBannersVisible = false;
+                                if (bothBannersVisible == true) {
+                                    bothBannersVisible = false;
                                 } else {
-                                    this.bothBannersVisible = false;
+                                    bothBannersVisible = false;
                                 }
                             }
 
                         } else {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
-                            if (this.bothBannersVisible == true) {
-                                this.bothBannersVisible = false;
+                            if (bothBannersVisible == true) {
+                                bothBannersVisible = false;
                             } else {
-                                this.bothBannersVisible = false;
+                                bothBannersVisible = false;
                             }
                         }
                         
@@ -157,10 +156,13 @@ export default apiInitializer("1.14.0", (api) => {
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
 
+            get bothBannersVisibleGetter() {
+                return bothBannersVisible;
+            }
 
             <template>
                 {{#if this.isHomepage}}
-                    <p>{{this.bothBannersVisible}}</p>
+                    <p>{{this.bothBannersVisibleGetter}}</p>
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
                         {{#if this.annsData.visible}}
                             <div class='anns'>
