@@ -38,6 +38,7 @@ export default apiInitializer("1.14.0", (api) => {
         class BdaysAnnsBanner extends Component {
             @tracked annsDataFinal = null;
             @tracked bdaysDataFinal = null;
+            @tracked areBothBannersVisible = true;
             @service router;
 
             constructor() {
@@ -96,16 +97,17 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = false;
-                                bothBannersVisible = false;
+                                this.areBothBannersVisible = false;
                             } else {
                                 this.annsDataFinal.isFilled = false;
                                 this.annsDataFinal.visible = true;
-                                bothBannersVisible = true;
+                                this.areBothBannersVisible = true;
                             }
                         } else {
                             this.annsDataFinal.isFilled = true;
                             this.annsDataFinal.visible = true;
-                            bothBannersVisible = true;
+                            this.areBothBannersVisible = true;
+                            console.log(this.areBothBannersVisible);
                         }
                         
                         // If the data is not loaded yet, return null or any default value
@@ -121,28 +123,28 @@ export default apiInitializer("1.14.0", (api) => {
                             if (settings.hide_unused_data) {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = false;
-                                if (bothBannersVisible == false) {
-                                    bothBannersVisible = false;
+                                if (!this.areBothBannersVisible) {
+                                    this.areBothBannersVisible = false;
                                 } else {
-                                    bothBannersVisible = true;
+                                    this.areBothBannersVisible = true;
                                 }
                             } else {
                                 this.bdaysDataFinal.isFilled = false;
                                 this.bdaysDataFinal.visible = true;
-                                if (bothBannersVisible == false) {
-                                    bothBannersVisible = false;
+                                if (!this.areBothBannersVisible) {
+                                    this.areBothBannersVisible = false;
                                 } else {
-                                    bothBannersVisible = true;
+                                    this.areBothBannersVisible = true;
                                 }
                             }
 
                         } else {
                             this.bdaysDataFinal.isFilled = true;
                             this.bdaysDataFinal.visible = true;
-                            if (bothBannersVisible == false) {
-                                bothBannersVisible = false;
+                            if (!this.areBothBannersVisible) {
+                                this.areBothBannersVisible = false;
                             } else {
-                                bothBannersVisible = true;
+                                this.areBothBannersVisible = true;
                             }
                         }
                         
@@ -162,6 +164,7 @@ export default apiInitializer("1.14.0", (api) => {
 
             <template>
                 {{#if this.isHomepage}}
+                    <p>{{this.areBothBannersVisible}}</p>
                     <p>{{this.bothBannersVisibleGetter}}</p>
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
                         {{#if this.annsData.visible}}
