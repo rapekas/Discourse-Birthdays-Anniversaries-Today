@@ -29,7 +29,6 @@ xhr.onload = () => {
 return annsOfData;
 */
 
-var bothBannersVisible = false;
 
 export default apiInitializer("1.14.0", (api) => {
     //const banner_location = settings.banner_location
@@ -93,25 +92,23 @@ export default apiInitializer("1.14.0", (api) => {
             get annsData() {
                 //return this.annsDataFinal;
                 if (this.annsDataFinal !== null) {
-                        if (this.annsDataFinal.num_anns == 0) {
-                            if (settings.hide_unused_data) {
-                                this.annsDataFinal.isFilled = false;
-                                this.annsDataFinal.visible = false;
-                                this.areBothBannersVisible = false;
-                            } else {
-                                this.annsDataFinal.isFilled = false;
-                                this.annsDataFinal.visible = true;
-                                this.areBothBannersVisible = true;
-                            }
+                    if (this.annsDataFinal.num_anns == 0) {
+                        if (settings.hide_unused_data) {
+                            this.annsDataFinal.isFilled = false;
+                            this.annsDataFinal.visible = false;
+                            this.areBothBannersVisible = false;
                         } else {
-                            this.annsDataFinal.isFilled = true;
+                            this.annsDataFinal.isFilled = false;
                             this.annsDataFinal.visible = true;
-                            this.areBothBannersVisible = true;
-                            console.log(this.areBothBannersVisible);
+                            
                         }
-                        
-                        // If the data is not loaded yet, return null or any default value
-                        return this.annsDataFinal;
+                    } else {
+                        this.annsDataFinal.isFilled = true;
+                        this.annsDataFinal.visible = true;
+                    }
+                    
+                    // If the data is not loaded yet, return null or any default value
+                    return this.annsDataFinal;
                 }
             }
         
@@ -119,27 +116,17 @@ export default apiInitializer("1.14.0", (api) => {
             get bdaysData() {
                 //return this.bdaysDataFinal;
                 if (this.bdaysDataFinal !== null) {
-                        if (this.bdaysDataFinal.num_bdays == 0) {
-                            if (settings.hide_unused_data) {
-                                this.bdaysDataFinal.isFilled = false;
-                                this.bdaysDataFinal.visible = false;
-                                if (!this.areBothBannersVisible) {
-                                    this.areBothBannersVisible = false;
-                                } else {
-                                    this.areBothBannersVisible = true;
-                                }
+                    if (this.bdaysDataFinal.num_bdays == 0) {
+                        if (settings.hide_unused_data) {
+                            this.bdaysDataFinal.isFilled = false;
+                            this.bdaysDataFinal.visible = false;
+                            if (!this.areBothBannersVisible) {
+                                this.areBothBannersVisible = false;
                             } else {
-                                this.bdaysDataFinal.isFilled = false;
-                                this.bdaysDataFinal.visible = true;
-                                if (!this.areBothBannersVisible) {
-                                    this.areBothBannersVisible = false;
-                                } else {
-                                    this.areBothBannersVisible = true;
-                                }
+                                this.areBothBannersVisible = true;
                             }
-
                         } else {
-                            this.bdaysDataFinal.isFilled = true;
+                            this.bdaysDataFinal.isFilled = false;
                             this.bdaysDataFinal.visible = true;
                             if (!this.areBothBannersVisible) {
                                 this.areBothBannersVisible = false;
@@ -147,9 +134,19 @@ export default apiInitializer("1.14.0", (api) => {
                                 this.areBothBannersVisible = true;
                             }
                         }
-                        
-                        // If the data is not loaded yet, return null or any default value
-                        return this.bdaysDataFinal;
+    
+                    } else {
+                        this.bdaysDataFinal.isFilled = true;
+                        this.bdaysDataFinal.visible = true;
+                        if (!this.areBothBannersVisible) {
+                            this.areBothBannersVisible = false;
+                        } else {
+                            this.areBothBannersVisible = true;
+                        }
+                    }
+                    
+                    // If the data is not loaded yet, return null or any default value
+                    return this.bdaysDataFinal;
                 }
             }
 
@@ -158,14 +155,9 @@ export default apiInitializer("1.14.0", (api) => {
                 return currentRouteName === `discovery.${defaultHomepage()}`;
             }
 
-            get bothBannersVisibleGetter() {
-                return bothBannersVisible;
-            }
-
             <template>
                 {{#if this.isHomepage}}
                     <p>{{this.areBothBannersVisible}}</p>
-                    <p>{{this.bothBannersVisibleGetter}}</p>
                     <div class='bdaysannsbanner' id='bdaysannsbanner'>
                         {{#if this.annsData.visible}}
                             <div class='anns'>
