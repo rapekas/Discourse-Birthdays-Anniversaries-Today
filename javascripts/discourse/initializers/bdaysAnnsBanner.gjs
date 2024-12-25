@@ -156,40 +156,39 @@ export default apiInitializer("1.14.0", (api) => {
 
             <template>
                 {{#if this.isHomepage}}
-                    <p>{{this.areBothBannersVisible}}</p>
-                    <div class='bdaysannsbanner' id='bdaysannsbanner'>
-                        {{#if this.annsData.visible}}
-                            <div class='anns'>
-                                {{#if this.annsData.isFilled}}
-                                    <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
-                                    <!-- Display the anniversaries data -->
-                                    {{#each this.annsData.anns_users as |username|}}
-                                        <span><a class='mention'>{{username}}</a></span>
-                                    {{/each}}
-                                {{else}}
-                                    <p>No one has their anniversary today!</p>
-                                {{/if}}
-                            </div>
-                        {{/if}}
-                        <br />
-                        {{#if this.bdaysData.visible}}
-                            <div class='bdays'>
-                                {{#if this.bdaysData.isFilled}}
-                                    <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
-                                    <!-- Display the birthday data -->
-                                    {{#each this.bdaysData.bdays_users as |username|}}
-                                        <span><a class='mention'>{{username}}</a></span>
-                                    {{/each}}
-                                {{else}}
-                                    <p>No one is celebrating their birthday today!</p>
-                                {{/if}}
-                            </div>
-                        {{/if}}
-                    </div>
-                    
+                    {{#if this.areBothBannersVisible}}
+                        <div class='bdaysannsbanner' id='bdaysannsbanner'>
+                            {{#if this.annsData.visible}}
+                                <div class='anns'>
+                                    {{#if this.annsData.isFilled}}
+                                        <p>{{this.annsData.num_anns}} users are celebrating their anniversary!</p>
+                                        <!-- Display the anniversaries data -->
+                                        {{#each this.annsData.anns_users as |username|}}
+                                            <span><a class='mention'>{{username}}</a></span>
+                                        {{/each}}
+                                    {{else}}
+                                        <p>No one has their anniversary today!</p>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
+                            <br />
+                            {{#if this.bdaysData.visible}}
+                                <div class='bdays'>
+                                    {{#if this.bdaysData.isFilled}}
+                                        <p>{{this.bdaysData.num_bdays}} users are celebrating their birthday!</p>
+                                        <!-- Display the birthday data -->
+                                        {{#each this.bdaysData.bdays_users as |username|}}
+                                            <span><a class='mention'>{{username}}</a></span>
+                                        {{/each}}
+                                    {{else}}
+                                        <p>No one is celebrating their birthday today!</p>
+                                    {{/if}}
+                                </div>
+                            {{/if}}
+                        </div>
+                    {{/if}}
                 {{/if}}
             </template>
-
         }
     );
 });
