@@ -100,6 +100,7 @@ export default apiInitializer("1.14.0", (api) => {
                         this.areBothBannersVisible == false;
                     }
                 }
+                console.log(this.areBothBannersVisible);
             }
 
             
