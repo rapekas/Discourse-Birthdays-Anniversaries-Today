@@ -1,0 +1,7 @@
+en:
+  anniversary:
+    no: "No one has their anniversary today!"
+    yes: "users are celebrating their anniversary!"
+  birthday:
+    no: "No one is celebrating their birthday today!"
+    yes: "users are celebrating their birthday!"
