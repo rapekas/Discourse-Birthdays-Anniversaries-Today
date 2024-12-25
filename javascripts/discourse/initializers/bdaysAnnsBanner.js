@@ -88,6 +88,21 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
 
+            @action
+            updateBothBannersVisibility(bannerData) {
+                // Check if it's anns or bdays
+                if (bannerData.num_anns) { // It's anns
+                    if (bannerData.num_anns == 0 && settings.hide_unused_data) {
+                        this.areBothBannersVisible == false;
+                    }
+                } else { // It's bdays
+                    if (bannerData.num_bdays == 0 && settings.hide_unused_data) {
+                        this.areBothBannersVisible == false;
+                    }
+                }
+            }
+
+            
             // Getter for the data
             get annsData() {
                 //return this.annsDataFinal;
@@ -96,17 +111,15 @@ export default apiInitializer("1.14.0", (api) => {
                         if (settings.hide_unused_data) {
                             this.annsDataFinal.isFilled = false;
                             this.annsDataFinal.visible = false;
-                            this.areBothBannersVisible = false;
                         } else {
                             this.annsDataFinal.isFilled = false;
-                            this.annsDataFinal.visible = true;
-                            
                         }
                     } else {
                         this.annsDataFinal.isFilled = true;
                         this.annsDataFinal.visible = true;
                     }
                     
+                    this.updateBothBannersVisibility(this.annsDataFinal);
                     // If the data is not loaded yet, return null or any default value
                     return this.annsDataFinal;
                 }
@@ -120,31 +133,17 @@ export default apiInitializer("1.14.0", (api) => {
                         if (settings.hide_unused_data) {
                             this.bdaysDataFinal.isFilled = false;
                             this.bdaysDataFinal.visible = false;
-                            if (!this.areBothBannersVisible) {
-                                this.areBothBannersVisible = false;
-                            } else {
-                                this.areBothBannersVisible = true;
-                            }
                         } else {
                             this.bdaysDataFinal.isFilled = false;
                             this.bdaysDataFinal.visible = true;
-                            if (!this.areBothBannersVisible) {
-                                this.areBothBannersVisible = false;
-                            } else {
-                                this.areBothBannersVisible = true;
-                            }
                         }
     
                     } else {
                         this.bdaysDataFinal.isFilled = true;
                         this.bdaysDataFinal.visible = true;
-                        if (!this.areBothBannersVisible) {
-                            this.areBothBannersVisible = false;
-                        } else {
-                            this.areBothBannersVisible = true;
-                        }
                     }
-                    
+
+                    this.updateBothBannersVisibility(this.bdaysDataFinal);
                     // If the data is not loaded yet, return null or any default value
                     return this.bdaysDataFinal;
                 }
