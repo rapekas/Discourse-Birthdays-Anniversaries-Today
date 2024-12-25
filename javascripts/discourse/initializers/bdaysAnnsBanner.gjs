@@ -155,8 +155,9 @@ export default apiInitializer("1.14.0", (api) => {
             }
 
             <template>
-                {{#if this.isHomepage}}
-                    {{#if this.areBothBannersVisible}}
+                {{#if this.areBothBannersVisible}}
+                    {{#if this.isHomepage}}
+                    
                         <div class='bdaysannsbanner' id='bdaysannsbanner'>
                             {{#if this.annsData.visible}}
                                 <div class='anns'>
