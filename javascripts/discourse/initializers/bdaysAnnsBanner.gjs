@@ -163,13 +163,13 @@ export default apiInitializer("1.14.0", (api) => {
                             {{#if this.annsData.visible}}
                                 <div class='anns'>
                                     {{#if this.annsData.isFilled}}
-                                        <p>{{this.annsData.num_anns}} {{anniversary.yes}}</p>
+                                        <p>{{this.annsData.num_anns}} anniversary.yes</p>
                                         <!-- Display the anniversaries data -->
                                         {{#each this.annsData.anns_users as |username|}}
                                             <span><a class='mention'>{{username}}</a></span>
                                         {{/each}}
                                     {{else}}
-                                        <p>{{anniversary.no}}</p>
+                                        <p>anniversary.no</p>
                                     {{/if}}
                                 </div>
                             {{/if}}
@@ -177,13 +177,13 @@ export default apiInitializer("1.14.0", (api) => {
                             {{#if this.bdaysData.visible}}
                                 <div class='bdays'>
                                     {{#if this.bdaysData.isFilled}}
-                                        <p>{{this.bdaysData.num_bdays}} {{birthday.yes}}</p>
+                                        <p>{{this.bdaysData.num_bdays}} birthday.yes</p>
                                         <!-- Display the birthday data -->
                                         {{#each this.bdaysData.bdays_users as |username|}}
                                             <span><a class='mention'>{{username}}</a></span>
                                         {{/each}}
                                     {{else}}
-                                        <p>{{birthday.no}}</p>
+                                        <p>birthday.no</p>
                                     {{/if}}
                                 </div>
                             {{/if}}
